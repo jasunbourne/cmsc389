@@ -17,7 +17,7 @@ if (isset($_POST["nextPageButton"])) {
     $_SESSION["course4"] = $_POST["course4"];
     $_SESSION["course5"] = $_POST["course5"];
 
-    header("Location: apply2.php");
+    header("Location: main.php");
 
 }
 else {
