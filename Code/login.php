@@ -29,14 +29,22 @@ if (isset($_POST['submitBtn'])) {
     /* Bind user to LDAP with password */
     $verify_user=ldap_bind($ldapconn,"uid=$login_nm,ou=people,dc=umd,dc=edu",$login_passwd);
 
-    /* Returns 1 on Success */
-    if ($verify_user != 1) {
-        /* Failed */
-        $bottomPart = "Invalid directoryId/password<br>";
+    if ($verify_user) {
+        $filter="(uid=$login_nm)";
+        $result = ldap_search($ldapconn,"dc=umd,dc=edu",$filter);
+        ldap_sort($ldapconn,$result,"sn");
+        $info = ldap_get_entries($ldapconn, $result);
+        for ($i=0; $i<$info["count"]; $i++)
+        {
+            if($info['count'] > 1)
+                break;
+            echo "<p>You are accessing <strong> ". $info[0]["umstaff"][0] .", " . $info[$i]["givenname"][0] ."</strong><br /> (" . $info[$i]["uid"][0] .")</p>\n";
+            header("Location: main.php");
+        }
+
     } else {
-        /* Success */
-        $bottomPart = "You have been authenticated as having a valid UMD directory ID.";
-        header("Location: main.php");
+        $msg = "Invalid email address / password";
+        echo $msg;
     }
 
     // Release connection

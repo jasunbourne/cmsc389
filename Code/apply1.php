@@ -18,6 +18,11 @@ if (isset($_POST["nextPageButton"])) {
 }
 else {
     $contactInfo = <<<BODY
+        <script>
+        $(document).ready(function($) {
+            $('#phoneNumber').mask('(000) 000-0000');
+        });
+        </script>
 		<form action="{$_SERVER['PHP_SELF']}" method="post">
 		    <fieldset>
 		        <legend>Contact Information</legend>
@@ -39,12 +44,12 @@ else {
                 
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input class="form-control" id="phoneNumber" type="text" pattern = "\([0-9]{3}\)[0-9]{3}-[0-9]{4}" placeholder="(XXX)XXX-XXXX" name="phoneNumber" required/><br>
+                    <input class="form-control" id="phoneNumber" type="text" pattern = "\([0-9]{3}\) [0-9]{3}-[0-9]{4}" placeholder="(XXX)XXX-XXXX" name="phoneNumber" required/><br>
                 </div>
             </fieldset>
 						
 			<input class="btn btn-primary" type="submit" name="nextPageButton" value="Next"/>
-			<input class="btn btn-primary" type="submit" name="returnHomeButton" value="Return to Main Menu"/>
+			<input class="btn btn-primary" type="submit" name="returnHomeButton" value="Return to Main Menu" formnovalidate/>
 		</form>		
 BODY;
 }

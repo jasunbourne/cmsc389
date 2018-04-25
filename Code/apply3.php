@@ -65,7 +65,7 @@ else {
             </fieldset>
                         
             <input class="btn btn-primary" type="submit" name="nextPageButton" value="Next"/>
-            <input class="btn btn-primary" type="submit" name="returnHomeButton" value="Return to Main Menu"/>
+            <input class="btn btn-primary" type="submit" name="returnHomeButton" value="Return to Main Menu" formnovalidate/>
         </form>	
 BODY;
 }
