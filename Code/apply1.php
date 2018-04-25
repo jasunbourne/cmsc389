@@ -5,7 +5,7 @@ session_start();
 $contactInfo = "";
 
 if(isset($_POST["returnHomeButton"]))
-    header("Location: main.php");
+    header("Location: applicantHome.php");
 
 if (isset($_POST["nextPageButton"])) {
     $_SESSION["firstName"] = $_POST["firstName"];
@@ -19,25 +19,29 @@ if (isset($_POST["nextPageButton"])) {
 else {
     $contactInfo = <<<BODY
 		<form action="{$_SERVER['PHP_SELF']}" method="post">
-			<strong>First Name:</strong>
-			<div class="form-group">
-			    <input type="text" name="firstName" maxlength="50"/><br>
-            </div>
-			
-			<strong>Last Name:</strong>
-			<div class="form-group">
-			    <input type="text" name="lastName" maxlength = "50"/><br>
-            </div>
-		
-			<strong>Email:</strong>
-			<div class="form-group">
-			    <input type="email" name="email"/><br>
-            </div>
-			
-			<strong>Phone Number format (XXX)XXX-XXXX:</strong>
-			<div class="form-group">
-			    <input type="text" pattern = "\([0-9]{3}\)[0-9]{3}-[0-9]{4}" name="phoneNumber"/><br>
-            </div>
+		    <fieldset>
+		        <legend>Contact Information</legend>
+                <div class="row">
+                    <div class="col">
+                        <label for="firstName">First Name:</label>
+                        <input class="form-control" id="firstName" type="text" name="firstName" maxlength="50" required/><br>
+                    </div>
+                    <div class="col">
+                        <label for="lastName">Last Name:</label>
+                        <input class="form-control" id="lastName" type="text" name="lastName" maxlength="50" required/><br>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" id="email" type="email" name="email" required/><br>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input class="form-control" id="phoneNumber" type="text" pattern = "\([0-9]{3}\)[0-9]{3}-[0-9]{4}" placeholder="(XXX)XXX-XXXX" name="phoneNumber" required/><br>
+                </div>
+            </fieldset>
 						
 			<input class="btn btn-primary" type="submit" name="nextPageButton" value="Next"/>
 			<input class="btn btn-primary" type="submit" name="returnHomeButton" value="Return to Main Menu"/>

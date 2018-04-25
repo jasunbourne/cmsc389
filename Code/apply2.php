@@ -5,16 +5,17 @@ session_start();
 $studentInfo = "";
 
 if(isset($_POST["returnHomeButton"]))
-    header("Location: main.php");
+    header("Location: applicantHome.php");
 
 if (isset($_POST["nextPageButton"])) {
     $_SESSION["uid"] = $_POST["uid"];
-    $_SESSION["semester"] = $_POST["semester"];
+    $_SESSION["gpa"] = $_POST["gpa"];
+    $_SESSION["entrySemester"] = $_POST["entrySemester"];
     $_SESSION["year"] = $_POST["year"];
     $_SESSION["studentType"] = $_POST["studentType"];
     $_SESSION["department"] = $_POST["department"];
     $_SESSION["advisor"] = $_POST["advisor"];
-    $_SESSION["ta"] = $_POST["ta"];
+    $_SESSION["currentlyTA"] = $_POST["currentlyTA"];
     $_SESSION["currentStep"] = $_POST["currentStep"];
     $_SESSION["currCourse"] = $_POST["currCourse"];
     $_SESSION["instructor"] = $_POST["instructor"];
@@ -27,79 +28,118 @@ if (isset($_POST["nextPageButton"])) {
 else {
     $studentInfo = <<<BODY
 		<form action="{$_SERVER['PHP_SELF']}" method="post">
-			<div class="form-group">
-			    <strong>UID:</strong>
-			    <input type="text" name="uid" maxlength="9"/><br>
-            </div>
-			
-            <div class="form-group">
-                <strong>Semseter:</strong>
-                <select class="select" name="semester">
-                    <option value = "spring">Spring</option>
-                    <option value = "fall">Fall</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <strong>Year:</strong>
-                <input type="text" name="year" pattern=[0-9]{4}/>  
-            </div>
-                  
-			<div class="form-group">
-			    <strong>I am a...</strong>
-                <input type="radio" name="studentType" value="phd"/>&nbsp;PhD Student
-                <input type="radio" name="studentType" value="ms"/>&nbsp;MS Student
-            </div>
-			
-			<div class="form-group">
-			    <strong>Department: </strong>
-			    <input type="text" name="department"/><br>
-            </div>
-            
-            <div class="form-group">
-			    <strong>Advisor: </strong>
-                <input type="text" name="advisor"/><br>
-            </div>
-			
-			<div>
-			    <strong>Are you currently a TA?</strong>
-			    <input type="radio" name="ta" value = "yes"/>&nbsp;Yes
-                <input type="radio" name="ta" value = "no"/>&nbsp;No
-            </div>		    
-		
-			<div class="form-group well">
-			    <header> If yes</header>
-                <select name = "currentStep">
-                    <option value = "step1">Step 1</option>
-                    <option value = "step2">Step 2</option>
-                    <option value = "step3">Step 3</option>
-                </select><br>
-		    
-                <strong>Current Course: </strong>
-                <input type="text" name="currCourse"/><br>
+		    <fieldset>
+		        <legend>Student Information</legend>		    
+                <div class="form-group">
+                    <label for="uid">UID:</label>
+                    <input class="form-control" type="text" id="uid" name="uid" maxlength="9"/><br>
+                </div>
                 
-                <strong>Instructor: </strong>
-                <input type="text" name="instructor"/><br>
+                <div class="row">
+                    <div class="col">
+                        <label for="entrySemester">Entry Semester:</label>
+                        <select class="form-control" name="entrySemester" id="entrySemester">
+                            <option value = "spring">Spring</option>
+                            <option value = "fall">Fall</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="entryYear">Entry Year:</label>
+                        <input class="form-control" id="entryYear" type="text" name="entryYear" maxlength="4" pattern=[0-9]{4} required/><br>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gpa">Cumulative GPA:</label>
+                    <input class="form-control" id="gpa" type="number" name="year" max="4" min="0" step=".01">  
+                </div>
+    
+                <div class="form-group">
+                    <label for="studentType">Student Type:</label>
+                    <div id="studentType">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="studentType" id="phd" value="phd">
+                            <label class="form-check-label" for="phd">PhD Student</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="studentType" id="ms" value="ms">
+                            <label class="form-check-label" for="ms">MS Student</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="studentType" id="ugrad" value="ugrad">
+                            <label class="form-check-label" for="ugrad">Undergraduate Student</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <input class="form-control" id="department" type="text" name="department" value="Computer Science">  
+                </div>
+                
+                <div class="form-group">
+                    <label for="advisor">Advisor:</label>
+                    <input class="form-control" id="advisor" type="text" name="advisor">  
+                </div>
+                
+                <div class="form-group">
+                    <label for="currentTA">Are you currently a TA?</label>
+                    <div id="currentTA">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="currentlyTA" id="yes" value="yes" onClick="displayForm(this)">
+                            <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="currentlyTA" id="no" value="no" onClick="displayForm(this)">
+                            <label class="form-check-label" for="no">No</label>
+                        </div>
+                    </div>
+                </div>    
             
-            </div>
+                <div class="form-group well" id="form-container" style="display:none;">
+                    <label for="currentStep">Current Step:</label>
+                    <select class="form-control" name="currentStep" id="currentStep">
+                        <<option value="Step 0">Step 0 (Undergraduate)</option>
+                        <option value="Step I">Step I (first-year graduate assistants only)</option>
+                        <option value="Step II">Step II (second-year assistants, or students holding an MS degree)</option>
+                        <option value="Step III">Step III (Ph.D. students officially advanced to candidacy)</option>
+                    </select>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label for="currCourse">Current Course:</label>
+                            <input class="form-control" type="text" name="currCourse" id="currCourse"/><br>
+                        </div>
+                        <div class="col">
+                            <label for="instructor">Instructor:</label>
+                            <input class="form-control" type="text" name="instructor" id="instructor"/><br>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">List any Previous TA Experience:</label>
+                    <input class="form-control" id="experience" type="text" name="experience">  
+                </div>
+                
+                <div class="form-group">
+                    <label for="hasMS">Do you have your MS degree?</label>
+                    <div id="hasMS">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="msdegree" id="yes" value="yes">
+                            <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="msdegree" id="no" value="no">
+                            <label class="form-check-label" for="no">No</label>
+                        </div>
+                    </div>
+                </div>    
+            </fieldset>
             
-            <div>
-                <strong>List any Previous TA Experience: </strong>
-			    <input type="text" name="experience"/><br>
-            </div>
-            
-			
-			<div>
-			    <strong>Do you have your MS degree</strong>
-			    <input type="radio" name="msdegree" value = "yes"/>&nbsp;Yes
-			    <input type="radio" name="msdegree" value = "no"/>&nbsp;No
-            </div>
-            
-            <br>
-				
 			<input class="btn btn-primary" type="submit" name="nextPageButton" value = "Next"/>
 			<input class="btn btn-primary" type = "submit" name = "returnHomeButton" value = "Return to Main Menu"/>
-		</form>		
+		</form>
 BODY;
 }
 
@@ -107,6 +147,15 @@ require_once("bootstrap.php");
 
 $page = generatePage($studentInfo, "Apply 4");
 echo $page;
-
-
 ?>
+
+
+<script type="text/javascript">
+    function displayForm(c) {
+        if (c.value === "yes") {
+            document.getElementById("form-container").style.display = 'inline';
+        } else if (c.value === "no") {
+            document.getElementById("form-container").style.display = 'none';
+        }
+    }
+</script>
