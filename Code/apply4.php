@@ -17,8 +17,7 @@ if (isset($_POST["nextPageButton"])) {
     $_SESSION["course4"] = $_POST["course4"];
     $_SESSION["course5"] = $_POST["course5"];
 
-    header("Location: main.php");
-
+    header("Location: apply5.php");
 }
 else {
     $date = date("Y");
