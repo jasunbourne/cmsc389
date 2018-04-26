@@ -13,7 +13,6 @@
 
 <?php
 $body = "";
-$bottomPart = "";
 
 if (isset($_POST['submitBtn'])) {
     $login_nm = $_POST["directoryid"];
@@ -60,24 +59,27 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
         </div>  
         <div class="container">
             <h1>Student Application Section</h1>
-            <form action="{$_SERVER["PHP_SELF"]}" method="post">
-                <div class="form-group">
-                    <strong>DirectoryID: </strong><input type="text" name = "directoryid" />
-                </div>
-                <div class="form-group">
-                    <strong>Password: </strong><input type="password" name="password" />
-                </div>       
+            <div class="container">
+            
+                <form action="{$_SERVER["PHP_SELF"]}" method="post">
+                    <div class="form-group">
+                        <strong>DirectoryID: </strong><input type="text" name = "directoryid" />
+                    </div>
+                    <div class="form-group">
+                        <strong>Password: </strong><input type="password" name="password" />
+                    </div>       
 
-                <div class="form-group">
-                    <input type="reset" />
-                    <input type="submit" name="submitBtn" value="Continue" />
-                </div>
-            </form>
+                    <div class="form-group">
+                        <input type="reset" />
+                        <input type="submit" name="submitBtn" value="Continue" />
+                    </div>
+                </form>
+            </div>
       </div>
 BODY;
 }
 
-echo $body.$bottomPart;
+echo $body;
 
 ?>
 
