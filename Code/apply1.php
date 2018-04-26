@@ -44,7 +44,7 @@ else {
                 
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input class="form-control" id="phoneNumber" type="text" pattern = "\([0-9]{3}\) [0-9]{3}-[0-9]{4}" placeholder="(XXX)XXX-XXXX" name="phoneNumber" required/><br>
+                    <input class="form-control" id="phoneNumber" type="text" pattern = "\([0-9]{3}\) [0-9]{3}-[0-9]{4}" name="phoneNumber" required/><br>
                 </div>
             </fieldset>
 						
