@@ -1,24 +1,17 @@
 <?php
-
 session_start();
-
 $body = "";
 $bottomPart = "";
-
 if (isset($_POST['submitBtn'])) {
     $login_nm = $_POST["directoryid"];
     $login_passwd = $_POST["password"];
-
     /* Establish a connection to the LDAP server */
     $ldapconn=ldap_connect("ldap://ldap.umd.edu/",389) or die('Could not connect<br>');
     // $ldapconn=ldap_connect("ldaps://ldap.umd.edu/",389) or die('Could not connect<br>');
-
     /* Set the protocol version to 3 (unless set to 3 by default) */
     ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
-
     /* Bind user to LDAP with password */
     $verify_user=ldap_bind($ldapconn,"uid=$login_nm,ou=people,dc=umd,dc=edu",$login_passwd);
-
     if ($verify_user) {
         $filter="(uid=$login_nm)";
         $result = ldap_search($ldapconn,"dc=umd,dc=edu",$filter);
@@ -39,16 +32,13 @@ if (isset($_POST['submitBtn'])) {
         //echo '<pre>';
         //var_dump($info);
         //echo '</pre>';
-
     } else {
         $msg = "Invalid email address / password";
         echo $msg;
     }
-
     // Release connection
     ldap_unbind($ldapconn);
 }
-
 if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_POST['facultyButton'])) {
     $body = <<<BODY
         <div class="container">
@@ -60,7 +50,6 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                 <div class="form-group">
                     <strong>Password: </strong><input type="password" name="password" />
                 </div>       
-
                 <div class="form-group">
                     <input type="reset" />
                     <input type="submit" name="submitBtn" value="Continue" />
@@ -69,10 +58,7 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
       </div>
 BODY;
 }
-
 require_once("bootstrap.php");
-
 $page = generatePage($body.$bottomPart, "Login");
 echo $page;
-
 ?>
