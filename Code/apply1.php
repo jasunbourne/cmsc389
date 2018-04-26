@@ -1,5 +1,8 @@
 <?php
 
+require_once("bootstrap.php");
+require_once("applicationSupport.php");
+
 session_start();
 
 $contactInfo = "";
@@ -17,6 +20,11 @@ if (isset($_POST["nextPageButton"])) {
 
 }
 else {
+    $firstName = getFieldValue("firstName", "");
+    $lastName = getFieldValue("lastName", "");
+    $email = getFieldValue("email", "");
+    $phoneNumber = getFieldValue("phoneNumber", "");
+
     $contactInfo = <<<BODY
         <script>
         $(document).ready(function($) {
@@ -29,22 +37,22 @@ else {
                 <div class="row">
                     <div class="col">
                         <label for="firstName">First Name:</label>
-                        <input class="form-control" id="firstName" type="text" name="firstName" maxlength="50" required/><br>
+                        <input class="form-control" id="firstName" type="text" name="firstName" maxlength="50" value="$firstName" required/><br>
                     </div>
                     <div class="col">
                         <label for="lastName">Last Name:</label>
-                        <input class="form-control" id="lastName" type="text" name="lastName" maxlength="50" required/><br>
+                        <input class="form-control" id="lastName" type="text" name="lastName" maxlength="50" value="$lastName" required/><br>
                     </div>
                 </div>
             
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input class="form-control" id="email" type="email" name="email" required/><br>
+                    <input class="form-control" id="email" type="email" name="email" value="$email" required/><br>
                 </div>
                 
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input class="form-control" id="phoneNumber" type="text" pattern = "\([0-9]{3}\) [0-9]{3}-[0-9]{4}" name="phoneNumber" required/><br>
+                    <input class="form-control" id="phoneNumber" type="text" name="phoneNumber" value="$phoneNumber" required/><br>
                 </div>
             </fieldset>
 						
@@ -54,7 +62,6 @@ else {
 BODY;
 }
 
-require_once("bootstrap.php");
 
 $page = generatePage($contactInfo, "Apply 1");
 echo $page;

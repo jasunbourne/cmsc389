@@ -1,5 +1,8 @@
 <?php
 
+require_once("bootstrap.php");
+require_once("applicationSupport.php");
+
 session_start();
 
 $contactInfo = "";
@@ -8,15 +11,14 @@ if(isset($_POST["returnHomeButton"]))
     header("Location: applicantHome.php");
 
 if (isset($_POST["nextPageButton"])) {
-    $_SESSION["firstName"] = $_POST["firstName"];
-    $_SESSION["lastName"] = $_POST["lastName"];
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["phoneNumber"] = $_POST["phoneNumber"];
+    $_SESSION["isInternational"] = $_POST["isInternational"];
+    $_SESSION["mei"] = $_POST["mei"];
+    $_SESSION["umei"] = $_POST["umei"];
 
     header("Location: apply4.php");
-
 }
 else {
+
     $contactInfo = <<<BODY
         <form action="{$_SERVER['PHP_SELF']}" method="post">
 		    <fieldset>
@@ -25,11 +27,11 @@ else {
                     <label for="international">Are you a Non-US Student?</label>
                     <div id="international">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="isInternational" id="yes" value="yes" onClick="displayForm(this)">
+                            <input class="form-check-input" type="radio" name="isInternational" id="yes" value="yes" onClick="displayForm(this)" {$isChecked("isInternational", "yes")}>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="isInternational" id="no" value="no" onClick="displayForm(this)">
+                            <input class="form-check-input" type="radio" name="isInternational" id="no" value="no" onClick="displayForm(this)" {$isChecked("isInternational", "no")}>
                             <label class="form-check-label" for="no">No</label>
                         </div>
                     </div>
@@ -39,11 +41,11 @@ else {
                         <label for="mei">Have you passed the Maryland English Institute (MEI Evaluation)?</label>
                         <div id="mei">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="mei" id="yes" value="yes">
+                                <input class="form-check-input" type="radio" name="mei" id="yes" value="yes" {$isChecked("mei", "yes")}>
                                 <label class="form-check-label" for="yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="mei" id="no" value="no">
+                                <input class="form-check-input" type="radio" name="mei" id="no" value="no" {$isChecked("mei", "no")}>
                                 <label class="form-check-label" for="no">No</label>
                             </div>
                         </div>
@@ -52,11 +54,11 @@ else {
                         <label for="umei">Are you currently taking a UMEI course?</label>
                         <div id="umei">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="umei" id="yes" value="yes">
+                                <input class="form-check-input" type="radio" name="umei" id="yes" value="yes" {$isChecked("umei", "yes")}>
                                 <label class="form-check-label" for="yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="umei" id="no" value="no">
+                                <input class="form-check-input" type="radio" name="umei" id="no" value="no" {$isChecked("umei", "no")}>
                                 <label class="form-check-label" for="no">No</label>
                             </div>
                         </div>
@@ -69,8 +71,6 @@ else {
         </form>	
 BODY;
 }
-
-require_once("bootstrap.php");
 
 $page = generatePage($contactInfo, "Apply 3");
 echo $page;
@@ -85,4 +85,7 @@ echo $page;
             document.getElementById("form-container").style.display = 'none';
         }
     }
+
+    displayForm(document.querySelector('input[name="isInternational"]:checked'));
+
 </script>
