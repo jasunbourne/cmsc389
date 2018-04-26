@@ -12,6 +12,9 @@
 
 
 <?php
+
+session_start();
+
 $body = "";
 $bottomPart = "";
 
@@ -34,13 +37,21 @@ if (isset($_POST['submitBtn'])) {
         $result = ldap_search($ldapconn,"dc=umd,dc=edu",$filter);
         ldap_sort($ldapconn,$result,"sn");
         $info = ldap_get_entries($ldapconn, $result);
-        for ($i=0; $i<$info["count"]; $i++)
-        {
-            if($info['count'] > 1)
-                break;
-            echo "<p>You are accessing <strong> ". $info[0]["umstaff"][0] .", " . $info[$i]["givenname"][0] ."</strong><br /> (" . $info[$i]["uid"][0] .")</p>\n";
+        //echo "<p>You are accessing <strong> ". $info[0]["umstaff"][0] .", " . $info[0]["givenname"][0] ."</strong><br /> (" . $info[0]["uid"][0] .")</p>\n";
+        $_SESSION["person"] = $info;
+        if ($info[0]["umstaff"][0] === "TRUE") {
             header("Location: main.php");
         }
+        else if ($info[0]["umstudent"][0] === "TRUE") {
+            header("Location: applicantHome.php");
+        }
+        else {
+            $msg = "You do not have valid credentials";
+            echo $msg;
+        }
+        //echo '<pre>';
+        //var_dump($info);
+        //echo '</pre>';
 
     } else {
         $msg = "Invalid email address / password";
@@ -53,11 +64,6 @@ if (isset($_POST['submitBtn'])) {
 
 if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_POST['facultyButton'])) {
     $body = <<<BODY
-        <div class="page-header" style="background-color: red;">
-            <img style="margin-top:15px; margin-left:10px;" src="https://upload.wikimedia.org/wikipedia/en/3/3e/University_of_Maryland_seal.svg" alt="UMD Logo" height="70" width="70">
-            <img style="margin-top:15px; margin-left:10px;" src="http://s3.amazonaws.com/umdheader.umd.edu/app/images/umd-bar-logo.png" alt="toggle">
-            <hr>
-        </div>  
         <div class="container">
             <h1>Student Application Section</h1>
             <form action="{$_SERVER["PHP_SELF"]}" method="post">
