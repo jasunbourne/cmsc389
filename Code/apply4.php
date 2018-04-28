@@ -7,36 +7,36 @@ session_start();
 
 $contactInfo = "";
 
+
+function createCourseOptionList($courses){
+    $result = "";
+    foreach($courses as $course){
+        $isSelected = isSelectedMulti("preferredCourses", $course);
+        $result.= "<option value='$course' $isSelected>$course</option>\n";
+    }
+    return $result;
+}
+
 if(isset($_POST["returnHomeButton"]))
     header("Location: applicantHome.php");
 
 if (isset($_POST["nextPageButton"])) {
     $_SESSION["position"] = $_POST["position"];
-    $_SESSION["teachingPosition"] = $_POST["teachingPosition"];
+    $_SESSION["canTeach"] = $_POST["canTeach"];
+    $_SESSION["prefersTeach"] = $_POST["prefersTeach"];
     $_SESSION["semester"] = $_POST["semester"];
     $_SESSION["year"] = $_POST["year"];
-    $_SESSION["course1"] = $_POST["course1"];
-    $_SESSION["course2"] = $_POST["course2"];
-    $_SESSION["course3"] = $_POST["course3"];
-    $_SESSION["course4"] = $_POST["course4"];
-    $_SESSION["course5"] = $_POST["course5"];
-    $_SESSION["course5"] = $_POST["course5"];
+    $_SESSION["preferredCourses"] = $_POST["preferredCourses"];
     $_SESSION["info"] = $_POST["info"];
-
 
     header("Location: apply5.php");
 }
 else {
 
     $year = getFieldValue("year", "");
-    $course1 = getFieldValue("course1", "CMSC");
-    $course2 = getFieldValue("course2", "CMSC");
-    $course3 = getFieldValue("course3", "CMSC");
-    $course4 = getFieldValue("course4", "CMSC");
-    $course5 = getFieldValue("course5", "CMSC");
     $info = getFieldValue("info", "");
 
-
+    $courses = createCourseOptionList(["CMSC131", "CMSC132", "CMSC216", "CMSC250", "CMSC330", "CMSC351", "Other"]);
 
     $date = date("Y");
     $contactInfo = <<<BODY
@@ -47,11 +47,11 @@ else {
                     <label for="type">Preferred Position Type:</label>
                     <div id="type">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="position" id="full" value="1" {$isChecked("position", "1")}>
+                            <input class="form-check-input" type="radio" name="position" id="full" value="fulltime" {$isChecked("position", "fulltime")}>
                             <label class="form-check-label" for="full">Full-time 20hrs/week</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="position" id="part" value="2" {$isChecked("position", "2")}>
+                            <input class="form-check-input" type="radio" name="position" id="part" value="parttime" {$isChecked("position", "parttime")}>
                             <label class="form-check-label" for="part">Part-time 10hrs/week</label>
                         </div>
                     </div>
@@ -60,16 +60,25 @@ else {
                     <label for="canTeach">Do you prefer a teaching position?</label>
                     <div id="canTeach">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="teachingPosition" id="yes" value="yes" {$isChecked("teachingPosition", "yes")}>
+                            <input class="form-check-input" type="radio" name="canTeach" id="1" value="1" {$isChecked("canTeach", "1")}>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="teachingPosition" id="cantTeach" value="cantTeach" {$isChecked("teachingPosition", "cantTeach")}>
-                            <label class="form-check-label" for="cantTeach">No, I cannot teach</label>
+                            <input class="form-check-input" type="radio" name="canTeach" id="0" value="0" {$isChecked("canTeach", "0")}>
+                            <label class="form-check-label" for="no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prefersTeach">Can you teach?</label>
+                    <div id="prefersTeach">
+                         <div class="form-check">
+                            <input class="form-check-input" type="radio" name="prefersTeach" id="1" value="1" {$isChecked("prefersTeach", "1")}>
+                            <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="teachingPosition" id="noCanTeach" value="noCanTeach" {$isChecked("teachingPosition", "noCanTeach")}>
-                            <label class="form-check-label" for="noCanTeach">No, I prefer not to teach</label>
+                            <input class="form-check-input" type="radio" name="prefersTeach" id="0" value="0" {$isChecked("prefersTeach", "0")}>
+                            <label class="form-check-label" for="no">No</label>
                         </div>
                     </div>
                 </div>
@@ -88,14 +97,12 @@ else {
                         <input class="form-control" id="year" type="text" name="year" value=$date>  
                     </div>
                 </div>
-               
+                
                 <div class="form-group">
-                    <label>Preferred Courses:</label>
-                    <input type="text" name="course1" class="form-control" value="$course1"/><br>
-                    <input type="text" name="course2" class="form-control" value="$course2"/><br>
-                    <input type="text" name="course3" class="form-control" value="$course3"/><br>
-                    <input type="text" name="course4" class="form-control" value="$course4"/><br>
-                    <input type="text" name="course5" class="form-control" value="$course5"/><br><br>
+                    <label for="preferredCourses">Select the courses you would be interested in being a TA for: </label>
+                    <select class="form-control" name="preferredCourses[]" id="preferredCourses" multiple>
+                        $courses
+                    </select>
                 </div>
                                 
                 <div class="form-group">

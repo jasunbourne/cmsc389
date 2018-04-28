@@ -17,7 +17,6 @@ if (isset($_POST["nextPageButton"])) {
     $_SESSION["phoneNumber"] = $_POST["phoneNumber"];
 
     header("Location: apply2.php");
-
 }
 else {
     $firstName = getFieldValue("firstName", "");

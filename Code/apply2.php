@@ -3,6 +3,16 @@
 require_once("bootstrap.php");
 require_once("applicationSupport.php");
 
+
+function createCourseOptionList($courses){
+    $result = "";
+    foreach($courses as $course){
+        $isSelected = isSelectedMulti("experience", $course);
+        $result.= "<option value='$course' $isSelected>$course</option>\n";
+    }
+    return $result;
+}
+
 session_start();
 
 $studentInfo = "";
@@ -14,7 +24,7 @@ if (isset($_POST["nextPageButton"])) {
     $_SESSION["uid"] = $_POST["uid"];
     $_SESSION["gpa"] = $_POST["gpa"];
     $_SESSION["entrySemester"] = $_POST["entrySemester"];
-    $_SESSION["year"] = $_POST["year"];
+    $_SESSION["entryYear"] = $_POST["entryYear"];
     $_SESSION["studentType"] = $_POST["studentType"];
     $_SESSION["department"] = $_POST["department"];
     $_SESSION["advisor"] = $_POST["advisor"];
@@ -40,6 +50,8 @@ else {
     $instructor = getFieldValue("instructor", "");
     $experience = getFieldValue("experience", "");
 
+    $courses = createCourseOptionList(["CMSC131", "CMSC132", "CMSC216", "CMSC250", "CMSC330", "CMSC351", "Other"]);
+
     $studentInfo = <<<BODY
 		<form action="{$_SERVER['PHP_SELF']}" method="post">
 		    <fieldset>
@@ -54,6 +66,7 @@ else {
                         <select class="form-control" name="entrySemester" id="entrySemester">
                             <option value = "spring" {$isSelected("entrySemester", "spring")}>Spring</option>
                             <option value = "fall" {$isSelected("entrySemester", "fall")}>Fall</option>
+                            <option value = "summer" {$isSelected("entrySemester", "summer")}>Summer</option>
                         </select>
                     </div>
                     <div class="col">
@@ -99,11 +112,11 @@ else {
                     <label for="currentTA">Are you currently a TA?</label>
                     <div id="currentTA">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="currentlyTA" id="yes" value="yes" onClick="displayForm(this)" {$isChecked("currentlyTA", "yes")}>
+                            <input class="form-check-input" type="radio" name="currentlyTA" id="1" value="1" onClick="displayForm(this)" {$isChecked("currentlyTA", "1")}>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="currentlyTA" id="no" value="no" onClick="displayForm(this)" {$isChecked("currentlyTA", "no")}>
+                            <input class="form-check-input" type="radio" name="currentlyTA" id="0" value="0" onClick="displayForm(this)" {$isChecked("currentlyTA", "0")}>
                             <label class="form-check-label" for="no">No</label>
                         </div>
                     </div>
@@ -112,10 +125,10 @@ else {
                 <div class="form-group well" id="form-container" style="display:none;">
                     <label for="currentStep">Current Step:</label>
                     <select class="form-control" name="currentStep" id="currentStep">
-                        <option value="Step 0" {$isSelected("currentStep", "Step 0")}>Step 0 (Undergraduate)</option>
-                        <option value="Step I" {$isSelected("currentStep", "Step I")}>Step I (first-year graduate assistants only)</option>
-                        <option value="Step II" {$isSelected("currentStep", "Step II")}>Step II (second-year assistants, or students holding an MS degree)</option>
-                        <option value="Step III" {$isSelected("currentStep", "Step III")}>Step III (Ph.D. students officially advanced to candidacy)</option>
+                        <option value="0" {$isSelected("currentStep", "0")}>Step 0 (Undergraduate)</option>
+                        <option value="1" {$isSelected("currentStep", "1")}>Step I (first-year graduate assistants only)</option>
+                        <option value="2" {$isSelected("currentStep", "2")}>Step II (second-year assistants, or students holding an MS degree)</option>
+                        <option value="3" {$isSelected("currentStep", "3")}>Step III (Ph.D. students officially advanced to candidacy)</option>
                     </select>
                     
                     <div class="row">
@@ -129,21 +142,23 @@ else {
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="experience">List any Previous TA Experience:</label>
-                    <input class="form-control" id="experience" type="text" name="experience" value="$experience">  
+                    <label for="experience">Select all of the courses for which you have been a TA:</label>
+                    <select class="form-control" name="experience[]" id="experience" multiple>
+                        $courses
+                    </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="hasMS">Do you have your MS degree?</label>
                     <div id="hasMS">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="msdegree" id="yes" value="yes" {$isChecked("msdegree", "yes")}>
+                            <input class="form-check-input" type="radio" name="msdegree" id="1" value="1" {$isChecked("msdegree", "1")}>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="msdegree" id="no" value="no" {$isChecked("msdegree", "no")}>
+                            <input class="form-check-input" type="radio" name="msdegree" id="0" value="0" {$isChecked("msdegree", "0")}>
                             <label class="form-check-label" for="no">No</label>
                         </div>
                     </div>
@@ -163,9 +178,9 @@ echo $page;
 
 <script type="text/javascript">
     function displayForm(c) {
-        if (c.value === "yes") {
+        if (c.value === "1") {
             document.getElementById("form-container").style.display = 'inline';
-        } else if (c.value === "no") {
+        } else if (c.value === "0") {
             document.getElementById("form-container").style.display = 'none';
         }
     }
