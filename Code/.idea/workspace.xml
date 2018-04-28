@@ -14,7 +14,7 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-326">
+            <state relative-caret-position="315">
               <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding>
                 <marker date="1524775975484" expanded="true" signature="1836:2485" ph="..." />
@@ -27,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apply2.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="apply2.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apply2.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="483">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="35" selection-end-column="47" />
               <folding>
                 <marker date="1524895424106" expanded="true" signature="1836:8781" ph="..." />
                 <marker date="1524895424106" expanded="true" signature="1853:1934" ph="..." />
@@ -72,11 +72,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="applicantHome.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/applicantHome.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+              <folding>
+                <marker date="1524897973964" expanded="true" signature="204:231" ph="SELECT * FRO... applicants" />
+                <marker date="1524897973964" expanded="true" signature="204:266" ph="SELECT * FRO... applicants" />
+                <marker date="1524897973964" expanded="true" signature="2052:2114" ph="SELECT * FRO... experience" />
+                <marker date="1524897973964" expanded="true" signature="2564:2633" ph="SELECT * FRO... preferred_courses" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="apply1.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apply1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="52" />
+            <state relative-caret-position="273">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="16" selection-end-column="53" />
               <folding>
                 <marker date="1524850751892" expanded="true" signature="711:835" ph="..." />
                 <marker date="1524850751892" expanded="true" signature="751:816" ph="{...}" />
@@ -106,8 +121,8 @@
       <file leaf-file-name="apply3.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apply3.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+            <state relative-caret-position="273">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="15" selection-end-column="39" />
               <folding>
                 <marker date="1524895512649" expanded="true" signature="510:3562" ph="..." />
                 <marker date="1524895512649" expanded="true" signature="527:3301" ph="..." />
@@ -179,8 +194,8 @@
       <file leaf-file-name="apply5.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apply5.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+            <state relative-caret-position="420">
+              <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <marker date="1524889984206" expanded="true" signature="398:459" ph="select name,... ${$table}" />
                 <marker date="1524889984206" expanded="true" signature="1746:1801" ph="insert into ${$table}... " />
@@ -194,37 +209,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbsupport.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbsupport.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="apply6.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apply6.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+            <state relative-caret-position="672">
+              <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
-                <marker date="1524896423897" expanded="true" signature="1679:2410" ph="INSERT INTO `applicants`... " />
-                <marker date="1524896423897" expanded="true" signature="1679:2411" ph="INSERT INTO `applicants`... " />
-                <marker date="1524896423897" expanded="true" signature="2790:2844" ph="DELETE from experience... " />
-                <marker date="1524896423897" expanded="true" signature="2976:3057" ph="INSERT into from... " />
-                <marker date="1524896423897" expanded="true" signature="2976:3058" ph="INSERT into `experience`... " />
-                <marker date="1524896423897" expanded="true" signature="2987:3057" ph="DELETE from experience... " />
-                <marker date="1524896423897" expanded="true" signature="3285:3339" ph="DELETE from experience... " />
-                <marker date="1524896423897" expanded="true" signature="3477:3559" ph="INSERT into `experience`... " />
-                <marker date="1524896423897" expanded="true" signature="3753:4717" ph="..." />
-                <marker date="1524896423897" expanded="true" signature="3776:3841" ph="..." />
-                <marker date="1524896423897" expanded="true" signature="3776:4701" ph="..." />
-                <marker date="1524896423897" expanded="true" signature="3854:4432" ph="..." />
-                <marker date="1524896423897" expanded="true" signature="3878:4301" ph="..." />
-                <marker date="1524896423897" expanded="true" signature="4409:4432" ph="..." />
-                <marker date="1524896423897" expanded="true" signature="4562:4568" ph=" " />
+                <marker date="1524896831675" expanded="true" signature="1679:2410" ph="INSERT INTO `applicants`... " />
+                <marker date="1524896831675" expanded="true" signature="1679:2411" ph="INSERT INTO `applicants`... " />
+                <marker date="1524896831675" expanded="true" signature="2790:2844" ph="DELETE from experience... " />
+                <marker date="1524896831675" expanded="true" signature="2976:3057" ph="INSERT into from... " />
+                <marker date="1524896831675" expanded="true" signature="2976:3058" ph="INSERT into `experience`... " />
+                <marker date="1524896831675" expanded="true" signature="2987:3057" ph="DELETE from experience... " />
+                <marker date="1524896831675" expanded="true" signature="3249:3303" ph="DELETE from experience... " />
+                <marker date="1524896831675" expanded="true" signature="3441:3523" ph="INSERT into `experience`... " />
+                <marker date="1524896831675" expanded="true" signature="3717:4681" ph="..." />
+                <marker date="1524896831675" expanded="true" signature="3740:3805" ph="..." />
+                <marker date="1524896831675" expanded="true" signature="3740:4665" ph="..." />
+                <marker date="1524896831675" expanded="true" signature="3818:4396" ph="..." />
+                <marker date="1524896831675" expanded="true" signature="3842:4265" ph="..." />
+                <marker date="1524896831675" expanded="true" signature="4373:4396" ph="..." />
+                <marker date="1524896831675" expanded="true" signature="4526:4532" ph=" " />
               </folding>
             </state>
           </provider>
@@ -246,6 +251,7 @@
         <option value="$PROJECT_DIR$/apply3.php" />
         <option value="$PROJECT_DIR$/apply4.php" />
         <option value="$PROJECT_DIR$/apply6.php" />
+        <option value="$PROJECT_DIR$/applicantHome.php" />
       </list>
     </option>
   </component>
@@ -322,12 +328,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524713210054</updated>
-      <workItem from="1524713214805" duration="24513000" />
+      <workItem from="1524713214805" duration="25820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24513000" />
+    <option name="totallyTimeSpent" value="25820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -460,10 +466,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <marker date="1524775975484" expanded="true" signature="1836:2485" ph="..." />
+            <marker date="1524775975484" expanded="true" signature="1950:2472" ph="..." />
+            <marker date="1524775975484" expanded="true" signature="1991:2107" ph="..." />
+            <marker date="1524775975484" expanded="true" signature="2148:2260" ph="..." />
+            <marker date="1524775975484" expanded="true" signature="2308:2452" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apply6.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1524896831675" expanded="true" signature="1679:2410" ph="INSERT INTO `applicants`... " />
+            <marker date="1524896831675" expanded="true" signature="1679:2411" ph="INSERT INTO `applicants`... " />
+            <marker date="1524896831675" expanded="true" signature="2790:2844" ph="DELETE from experience... " />
+            <marker date="1524896831675" expanded="true" signature="2976:3057" ph="INSERT into from... " />
+            <marker date="1524896831675" expanded="true" signature="2976:3058" ph="INSERT into `experience`... " />
+            <marker date="1524896831675" expanded="true" signature="2987:3057" ph="DELETE from experience... " />
+            <marker date="1524896831675" expanded="true" signature="3249:3303" ph="DELETE from experience... " />
+            <marker date="1524896831675" expanded="true" signature="3441:3523" ph="INSERT into `experience`... " />
+            <marker date="1524896831675" expanded="true" signature="3717:4681" ph="..." />
+            <marker date="1524896831675" expanded="true" signature="3740:3805" ph="..." />
+            <marker date="1524896831675" expanded="true" signature="3740:4665" ph="..." />
+            <marker date="1524896831675" expanded="true" signature="3818:4396" ph="..." />
+            <marker date="1524896831675" expanded="true" signature="3842:4265" ph="..." />
+            <marker date="1524896831675" expanded="true" signature="4373:4396" ph="..." />
+            <marker date="1524896831675" expanded="true" signature="4526:4532" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apply1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="52" />
+        <state relative-caret-position="273">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="16" selection-end-column="53" />
           <folding>
             <marker date="1524850751892" expanded="true" signature="711:835" ph="..." />
             <marker date="1524850751892" expanded="true" signature="751:816" ph="{...}" />
@@ -487,10 +531,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apply5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <marker date="1524889984206" expanded="true" signature="398:459" ph="select name,... ${$table}" />
+            <marker date="1524889984206" expanded="true" signature="1746:1801" ph="insert into ${$table}... " />
+            <marker date="1524889984206" expanded="true" signature="2353:2920" ph="..." />
+            <marker date="1524889984206" expanded="true" signature="2372:2447" ph="..." />
+            <marker date="1524889984206" expanded="true" signature="2372:2908" ph="..." />
+            <marker date="1524889984206" expanded="true" signature="2460:2630" ph="..." />
+            <marker date="1524889984206" expanded="true" signature="2768:2774" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apply3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+        <state relative-caret-position="273">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="15" selection-end-column="39" />
           <folding>
             <marker date="1524895512649" expanded="true" signature="510:3562" ph="..." />
             <marker date="1524895512649" expanded="true" signature="527:3301" ph="..." />
@@ -508,22 +568,6 @@
             <marker date="1524895512649" expanded="true" signature="2582:3225" ph="..." />
             <marker date="1524895512649" expanded="true" signature="2635:2889" ph="..." />
             <marker date="1524895512649" expanded="true" signature="2942:3194" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apply5.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding>
-            <marker date="1524889984206" expanded="true" signature="398:459" ph="select name,... ${$table}" />
-            <marker date="1524889984206" expanded="true" signature="1746:1801" ph="insert into ${$table}... " />
-            <marker date="1524889984206" expanded="true" signature="2353:2920" ph="..." />
-            <marker date="1524889984206" expanded="true" signature="2372:2447" ph="..." />
-            <marker date="1524889984206" expanded="true" signature="2372:2908" ph="..." />
-            <marker date="1524889984206" expanded="true" signature="2460:2630" ph="..." />
-            <marker date="1524889984206" expanded="true" signature="2768:2774" ph=" " />
           </folding>
         </state>
       </provider>
@@ -560,48 +604,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apply6.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-          <folding>
-            <marker date="1524896423897" expanded="true" signature="1679:2410" ph="INSERT INTO `applicants`... " />
-            <marker date="1524896423897" expanded="true" signature="1679:2411" ph="INSERT INTO `applicants`... " />
-            <marker date="1524896423897" expanded="true" signature="2790:2844" ph="DELETE from experience... " />
-            <marker date="1524896423897" expanded="true" signature="2976:3057" ph="INSERT into from... " />
-            <marker date="1524896423897" expanded="true" signature="2976:3058" ph="INSERT into `experience`... " />
-            <marker date="1524896423897" expanded="true" signature="2987:3057" ph="DELETE from experience... " />
-            <marker date="1524896423897" expanded="true" signature="3285:3339" ph="DELETE from experience... " />
-            <marker date="1524896423897" expanded="true" signature="3477:3559" ph="INSERT into `experience`... " />
-            <marker date="1524896423897" expanded="true" signature="3753:4717" ph="..." />
-            <marker date="1524896423897" expanded="true" signature="3776:3841" ph="..." />
-            <marker date="1524896423897" expanded="true" signature="3776:4701" ph="..." />
-            <marker date="1524896423897" expanded="true" signature="3854:4432" ph="..." />
-            <marker date="1524896423897" expanded="true" signature="3878:4301" ph="..." />
-            <marker date="1524896423897" expanded="true" signature="4409:4432" ph="..." />
-            <marker date="1524896423897" expanded="true" signature="4562:4568" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-326">
-          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-          <folding>
-            <marker date="1524775975484" expanded="true" signature="1836:2485" ph="..." />
-            <marker date="1524775975484" expanded="true" signature="1950:2472" ph="..." />
-            <marker date="1524775975484" expanded="true" signature="1991:2107" ph="..." />
-            <marker date="1524775975484" expanded="true" signature="2148:2260" ph="..." />
-            <marker date="1524775975484" expanded="true" signature="2308:2452" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apply2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="35" selection-end-column="47" />
           <folding>
             <marker date="1524895424106" expanded="true" signature="1836:8781" ph="..." />
             <marker date="1524895424106" expanded="true" signature="1853:1934" ph="..." />
@@ -637,6 +643,19 @@
             <marker date="1524895424106" expanded="true" signature="7897:8520" ph="..." />
             <marker date="1524895424106" expanded="true" signature="7946:8196" ph="..." />
             <marker date="1524895424106" expanded="true" signature="8245:8493" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/applicantHome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+          <folding>
+            <marker date="1524897973964" expanded="true" signature="204:231" ph="SELECT * FRO... applicants" />
+            <marker date="1524897973964" expanded="true" signature="204:266" ph="SELECT * FRO... applicants" />
+            <marker date="1524897973964" expanded="true" signature="2052:2114" ph="SELECT * FRO... experience" />
+            <marker date="1524897973964" expanded="true" signature="2564:2633" ph="SELECT * FRO... preferred_courses" />
           </folding>
         </state>
       </provider>

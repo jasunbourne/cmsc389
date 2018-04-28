@@ -76,7 +76,6 @@ if (isset($_POST["nextPageButton"])) {
 
 
     // INSERT INTO PREFERENCE TABLE
-    // INSERT INTO EXPERIENCE TABLE
     $table = "preferred_courses";
     $db_connection = getDBConnection();
     $sqlQuery = "DELETE from $table where directory_id = '$directoryID'";
