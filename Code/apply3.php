@@ -18,7 +18,6 @@ if (isset($_POST["nextPageButton"])) {
     header("Location: apply4.php");
 }
 else {
-
     $contactInfo = <<<BODY
         <form action="{$_SERVER['PHP_SELF']}" method="post">
 		    <fieldset>

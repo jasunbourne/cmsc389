@@ -29,6 +29,8 @@ if (isset($_POST['submitBtn'])) {
             $msg = "You do not have valid credentials";
             echo $msg;
         }
+
+        $_SESSION["directoryId"] = $info[0]["uid"][0];
         //echo '<pre>';
         //var_dump($info);
         //echo '</pre>';
