@@ -11,19 +11,41 @@ if(isset($_POST["returnHomeButton"]))
 
 
 $uploadResult = "";
+$serverUploadDirectory = "/tmp";
+$userDirectory = $serverUploadDirectory."/".getFieldValue("directoryId", "default");
+
+$previousFile = "";
+$isRequired = "required";
+
+if (file_exists($userDirectory)) {
+    if ($handle = opendir($userDirectory)) {
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                $isRequired = "";
+                $previousFile = "<p>Transcript on Record: <a href='downloadpdf.php?file=" . $entry . "&directory=" . $userDirectory . "'>" . $entry . "</a></p>";
+            }
+        }
+        closedir($handle);
+    }
+}
+
+
 if (isset($_POST["nextPageButton"])) {
     // serverUploadDirectory represents the directory where uploaded files will be placed
     // Replace with your own path.
 
-    // Create directory for files if it does not exist
     $fileName = $_FILES['filename']['name'];
-    $serverUploadDirectory = "/test";
+
+    if (empty($fileName) && $isRequired === ""){
+        header("Location: apply6.php");
+    }
+
+    // Create directory for files if it does not exist
     if (!file_exists($serverUploadDirectory)) {
         mkdir($serverUploadDirectory);
     }
 
     // Create directory for this users transcript
-    $userDirectory = $serverUploadDirectory."/".getFieldValue("directoryId", "default");
     if (!file_exists($userDirectory)) {
         mkdir($userDirectory);
     }
@@ -65,9 +87,10 @@ $form = <<<BODY
             <legend>Signature</legend>
             <div class="form-group">
                 <label for="file">Unofficial Transcript:</label>
-                <input type="file" name="filename" accept=".pdf" /><br />
+                <input type="file" name="filename" accept=".pdf" $isRequired /><br />
             </div>
-
+            $previousFile
+            <br>
             <input type="submit" class="btn btn-primary" name="nextPageButton" value="Next"/>&nbsp;
             <input type="submit" class="btn btn-primary" name = "returnHomeButton" value = "Return to Main Menu"/>
         </fieldset>
