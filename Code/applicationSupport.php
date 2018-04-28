@@ -19,6 +19,15 @@ function isSelected($fieldName, $value) {
     }
 }
 
+function isSelectedMulti($fieldName, $value) {
+    if (isset($_SESSION[$fieldName]) and in_array($value, $_SESSION[$fieldName])) {
+        return "selected";
+    }
+    else {
+        return "";
+    }
+}
+
 function isChecked($fieldName, $value) {
     if (isset($_SESSION[$fieldName]) and $_SESSION[$fieldName]==$value) {
         return "checked";

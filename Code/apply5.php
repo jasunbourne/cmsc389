@@ -1,6 +1,8 @@
 <?php
 
 require_once("applicationSupport.php");
+require_once("dbsupport.php");
+
 
 session_start();
 
@@ -9,25 +11,29 @@ $contactInfo = "";
 if(isset($_POST["returnHomeButton"]))
     header("Location: applicantHome.php");
 
-
 $uploadResult = "";
-$serverUploadDirectory = "/tmp";
-$userDirectory = $serverUploadDirectory."/".getFieldValue("directoryId", "default");
+$directoryID = getFieldValue("directoryId", "default");
+$table = "transcripts";
 
 $previousFile = "";
 $isRequired = "required";
 
-if (file_exists($userDirectory)) {
-    if ($handle = opendir($userDirectory)) {
-        while (false !== ($entry = readdir($handle))) {
-            if ($entry != "." && $entry != "..") {
-                $isRequired = "";
-                $previousFile = "<p>Transcript on Record: <a href='downloadpdf.php?file=" . $entry . "&directory=" . $userDirectory . "'>" . $entry . "</a></p>";
-            }
-        }
-        closedir($handle);
+$db_connection = getDBConnection();
+
+$sqlQuery = "select name from $table where directory_id = '{$directoryID}'";
+$result = $db_connection->query($sqlQuery);
+if ($result) {
+    $recordArray = mysqli_fetch_assoc($result);
+    if (mysqli_num_rows($result) > 0) {
+        $oldFileName = $recordArray['name'];
+        $isRequired = "";
+        $previousFile = "<p>Transcript on File: <a target='_blank' href='displayTranscript.php'>$oldFileName</a></p>";
     }
+    mysqli_free_result($result);
+} else { 				   ;
+    $body = "<h3>Failed to retrieve document existing transcript ".mysqli_error($db)." </h3>";
 }
+mysqli_close($db_connection);
 
 
 if (isset($_POST["nextPageButton"])) {
@@ -35,46 +41,30 @@ if (isset($_POST["nextPageButton"])) {
     // Replace with your own path.
 
     $fileName = $_FILES['filename']['name'];
-
-    if (empty($fileName) && $isRequired === ""){
+    if (empty($isRequired) and empty($fileName)) {
         header("Location: apply6.php");
     }
 
-    // Create directory for files if it does not exist
-    if (!file_exists($serverUploadDirectory)) {
-        mkdir($serverUploadDirectory);
-    }
-
-    // Create directory for this users transcript
-    if (!file_exists($userDirectory)) {
-        mkdir($userDirectory);
-    }
-    else {
-        $files = glob($userDirectory."/*"); // get all file names
-    }
     $tmpFileName = $_FILES['filename']['tmp_name'];
-    $serverFileName = $userDirectory."/".$fileName;
+
+    $docMimeType = "application/pdf";
 
     if(pathinfo($fileName, PATHINFO_EXTENSION) === "pdf") {
         // checking the file was uploaded via HTTP POST (to avoid tricking the
         // script into working on files it should not be working on (e.g., passwd)
-        if (!is_uploaded_file($tmpFileName))
-            $uploadResult = "<b>File upload failed</b>";
-        else {
-            // At this point you can check the validity of the file type, size, etc.
-            // copying file from temporary location
-            if (!move_uploaded_file($tmpFileName, $serverFileName))
-                $uploadResult = "<b>File upload failed</b>";
-            else {
-                if (isset($files)) {
-                    // Remove old transcript
-                    foreach ($files as $file) { // iterate files
-                        if (is_file($file))
-                            unlink($file); // delete file
-                    }
-                }
-                header("Location: apply6.php");
-            }
+        $fileData = addslashes(file_get_contents($tmpFileName));
+
+        $db_connection = getDBConnection();
+
+        $sqlQuery = "replace into $table (directory_id, name, mimType, data) values ";
+        $sqlQuery .= "('{$directoryID}', '{$fileName}', '{$docMimeType}', '{$fileData}')";
+        $result = $db_connection->query($sqlQuery);
+        mysqli_close($db_connection);
+        if ($result) {
+            header("Location: apply6.php");
+        }
+        else{
+            $uploadResult = "<h3>Failed to add document $fileName</h3>";
         }
     }
     else {
@@ -84,7 +74,7 @@ if (isset($_POST["nextPageButton"])) {
 $form = <<<BODY
     <form action="{$_SERVER['PHP_SELF']}" method="post" enctype="multipart/form-data">
         <fieldset>
-            <legend>Signature</legend>
+            <legend>Unofficial Transcript</legend>
             <div class="form-group">
                 <label for="file">Unofficial Transcript:</label>
                 <input type="file" name="filename" accept=".pdf" $isRequired /><br />
