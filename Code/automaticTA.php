@@ -1,6 +1,7 @@
 <?php 
     require_once "support.php";
-    require_once "dbLogin.php"; 
+    require_once "dbLogin.php";
+
 
     /* Connecting to the database */        
     $db_connection = new mysqli($host, $user, $password, $database);
@@ -51,6 +52,8 @@ $topPart = <<<EOBODY
             </form>     
         </div>
 EOBODY;
+
+    require_once "bootstrap.php";
     $body = $table.$topPart;
     
     $page = generatePage($body);

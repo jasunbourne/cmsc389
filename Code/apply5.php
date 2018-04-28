@@ -26,7 +26,7 @@ else {
                 </div>
                 
                 <input type="submit" class="btn btn-primary" name="nextPageButton" value="Submit Application"/>&nbsp;
-			    <input type="submit" class="btn btn-primary" name = "returnHomeButton" value = "Return to Main Menu"/>
+			    <input type="submit" class="btn btn-primary" name = "returnHomeButton" value = "Return to Main Menu" formnovalidate/>
             </fieldset>
         </form>
              
