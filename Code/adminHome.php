@@ -7,6 +7,10 @@ if (isset($_POST['submitClass'])) {
     header("Location: manualTA.php");
 }
 
+if (isset($_POST['viewApps'])) {
+    header("Location: adminViewApps.php");
+}
+
 
 if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_POST['facultyButton'])) {
     $body = <<<BODY
@@ -20,7 +24,10 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                         <input type="text" name="className" required/>
                     </div>
                     <div class="form-group"> 
-                        Manually Choose TAs: <input type = "submit" class="btn btn-info" name="appButton" value = "Manually Choose TA Assignment"/>
+                       <input type = "submit" class="btn btn-info" name="appButton" value = "Manually Choose TA Assignment"/>
+                    </div>
+                    <div class="form-group"> 
+                        <input type="submit" class="btn btn-info" name="viewApps" value="View Applications" formnovalidate/>
                     </div>
                 </form>
             </div>
