@@ -17,6 +17,9 @@ function createCourseOptionList($courses){
     return $result;
 }
 
+if(isset($_POST["prevPageButton"]))
+    header("Location: apply3.php");
+
 if(isset($_POST["returnHomeButton"]))
     header("Location: applicantHome.php");
 
@@ -110,7 +113,7 @@ else {
                     <textarea class="form-control" rows="5" id="info" name="info">$info</textarea>
                 </div>
             </fieldset>
-			
+			<input class="btn btn-primary" type="submit" name="prevPageButton" value="Previous" formnovalidate/>
 			<input type="submit" class="btn btn-primary" name="nextPageButton" value="Next"/>&nbsp;
 			<input type = "submit" class="btn btn-primary" name = "returnHomeButton" value = "Return to Main Menu" formnovalidate/>
 		</form>		

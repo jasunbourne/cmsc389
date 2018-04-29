@@ -7,6 +7,9 @@ session_start();
 
 $contactInfo = "";
 
+if(isset($_POST["prevPageButton"]))
+    header("Location: apply2.php");
+
 if(isset($_POST["returnHomeButton"]))
     header("Location: applicantHome.php");
 
@@ -64,7 +67,7 @@ else {
                     </div>  
                 </div>
             </fieldset>
-                        
+            <input class="btn btn-primary" type="submit" name="prevPageButton" value="Previous" formnovalidate/>           
             <input class="btn btn-primary" type="submit" name="nextPageButton" value="Next"/>
             <input class="btn btn-primary" type="submit" name="returnHomeButton" value="Return to Main Menu" formnovalidate/>
         </form>	

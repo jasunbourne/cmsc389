@@ -1,0 +1,5 @@
+#my-table{
+    width: 100%;
+    word-wrap:break-word;
+    table-layout: fixed;
+} /*or whatever width you want*/

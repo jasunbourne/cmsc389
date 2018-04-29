@@ -1,6 +1,4 @@
 <?php
-
-
     function getDBConnection() {
         $host = "localhost";
         $user = "student";

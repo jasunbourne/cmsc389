@@ -11,6 +11,7 @@ function generatePage($body, $title="Example") {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <title>$title</title>
     </head>
             

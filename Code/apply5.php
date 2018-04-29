@@ -8,6 +8,9 @@ session_start();
 
 $contactInfo = "";
 
+if(isset($_POST["prevPageButton"]))
+    header("Location: apply4.php");
+
 if(isset($_POST["returnHomeButton"]))
     header("Location: applicantHome.php");
 
@@ -81,6 +84,7 @@ $form = <<<BODY
             </div>
             $previousFile
             <br>
+            <input class="btn btn-primary" type="submit" name="prevPageButton" value="Previous" formnovalidate/>
             <input type="submit" class="btn btn-primary" name="nextPageButton" value="Next"/>&nbsp;
             <input type="submit" class="btn btn-primary" name = "returnHomeButton" value = "Return to Main Menu"/>
         </fieldset>

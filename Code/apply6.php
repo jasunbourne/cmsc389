@@ -40,10 +40,7 @@ if (isset($_POST["nextPageButton"])) {
     $directoryID = getFieldValue("directoryId", "default");
 
 
-
-
-
-
+    
     // INSERT INTO APPLICANTS TABLE
     $table = "applicants";
     $db_connection = getDBConnection();
@@ -54,12 +51,22 @@ if (isset($_POST["nextPageButton"])) {
      '$entrySemester', '$entryYear', '$studentType', '$department', '$advisor', '$currentlyTA', '$currentStep', '$currCourse',
      '$instructor', '$msdegree', '$isInternational', '$mei', '$umei', '$canTeach', '$prefersTeach', '$type', '$semester', '$year', '$info', '$directoryID')";
     $result = $db_connection->query($sqlQuery);
+
+    if (!mysqli_query($db_connection, $sqlQuery))
+    {
+        echo("Errorcode: " . mysqli_error($db_connection));
+    }
+
+
     mysqli_close($db_connection);
+
+
     if ($result) {
         echo "<script>alert('Application Submitted')</script>";
     }
     else{
-        $uploadResult = "<h3>Failed to add document $fileName</h3>";
+        echo $result;
+        $uploadResult = "<h3>Failed to add document</h3>";
     }
 
     // INSERT INTO EXPERIENCE TABLE
@@ -86,7 +93,7 @@ if (isset($_POST["nextPageButton"])) {
         $result = $db_connection->query($sqlQuery);
     }
 
-    header("Location: applicantHome.php");
+
 }
 else {
     $contactInfo = <<<BODY

@@ -1,10 +1,9 @@
 <?php 
-    require_once "support.php";
-    require_once "dbLogin.php";
+    require_once "dbsupport.php";
 
 
     /* Connecting to the database */        
-    $db_connection = new mysqli($host, $user, $password, $database);
+    $db_connection = getDBConnection();
     if ($db_connection->connect_error) {
         die($db_connection->connect_error);
     }
@@ -37,7 +36,7 @@
     } 
     $table .= "</table></div>";
     if(isset($_POST["back"])) {
-        header("Location: main.html");
+        header("Location: main.php");
     }
 
 
