@@ -94,7 +94,7 @@ BODY;
 
 require_once("bootstrap.php");
 
-$page = generatePage($form.$uploadResult, "Apply to TA");
+$page = generatePage($form.$uploadResult, "Apply 5");
 echo $page;
 
 

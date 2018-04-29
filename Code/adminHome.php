@@ -15,7 +15,7 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
 
             <div class="container">
 
-                <form action="main.php" method="post">
+                <form action="{$_SERVER["PHP_SELF"]}" method="post">
                     <div class="form-group">
                         <input type="text" name="className" required/>
                     </div>
@@ -31,7 +31,7 @@ BODY;
 
 require_once("bootstrap.php");
 
-$page = generatePage($body, "Main");
+$page = generatePage($body, "Admin Home");
 echo $page;
 
 

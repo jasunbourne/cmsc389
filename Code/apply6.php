@@ -40,7 +40,7 @@ if (isset($_POST["nextPageButton"])) {
     $directoryID = getFieldValue("directoryId", "default");
 
 
-    
+
     // INSERT INTO APPLICANTS TABLE
     $table = "applicants";
     $db_connection = getDBConnection();
@@ -93,6 +93,8 @@ if (isset($_POST["nextPageButton"])) {
         $result = $db_connection->query($sqlQuery);
     }
 
+    header("Location: applicantHome.php");
+
 
 }
 else {
@@ -120,7 +122,7 @@ BODY;
 
 require_once("bootstrap.php");
 
-$page = generatePage($contactInfo, "Apply 4");
+$page = generatePage($contactInfo, "Apply 6");
 echo $page;
 
 
