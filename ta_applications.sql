@@ -88,7 +88,7 @@ CREATE TABLE `paired_ta_final` (
 CREATE TABLE `course_settings` (
   `course` varchar(10) NOT NULL,
   `num_ta` int NOT NULL,
-  `chosen_ta` int NOT NULL,
+  `chosen_ta` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
