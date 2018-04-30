@@ -71,6 +71,31 @@ CREATE TABLE `experience` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chosen_ta`
+--
+
+CREATE TABLE `paired_ta_final` (
+  `directory_id` varchar(20) NOT NULL,
+  `course` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_settings`
+--
+
+CREATE TABLE `course_settings` (
+  `course` varchar(10) NOT NULL,
+  `num_ta_teaching` int NOT NULL,
+  `num_ta_grading` int NOT NULL,
+  `chosen_ta_teaching` int NOT NULL,
+  `chosen_ta_grading` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `preferred_courses`
 --
 
@@ -90,6 +115,15 @@ CREATE TABLE `transcripts` (
   `name` varchar(20) NOT NULL,
   `mimType` varchar(512) NOT NULL,
   `data` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table 'feedback'
+--
+
+CREATE TABLE `feedback` (
+  `directory_id` varchar(20) NOT NULL,
+  `feedback` varchar(400) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
