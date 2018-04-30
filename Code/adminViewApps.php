@@ -42,6 +42,15 @@
         btn.addEventListener('click', function() {
           document.location.href = 'adminHome.php';
         });
+        
+        $(document).ready(function() {
+    var table = $('#myTable').DataTable();
+     
+    $('#myTable tbody').on('click', 'tr', function () {
+        var data = table.row(this).data();
+        document.location.href = 'displayApplication.php/?id='+data[3];
+    } );
+} );
     </script>";
     $page = generatePage($table.$body, "Application");
     echo $page;
