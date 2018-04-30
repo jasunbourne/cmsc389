@@ -41,8 +41,6 @@ if ($result) {
         $_SESSION["info"] = $recordArray["additional_info"];
     }
     mysqli_free_result($result);
-} else {
-    $body = "<h3>Failed to retrieve document existing transcript ".mysqli_error($db)." </h3>";
 }
 
 $sqlQuery = "SELECT * FROM `experience` WHERE directory_id = '$directoryID'";
@@ -57,8 +55,6 @@ if ($result) {
     }
     $_SESSION["experience"] = $results;
     mysqli_free_result($result);
-} else {
-    $body = "<h3>Failed to retrieve document existing transcript ".mysqli_error($db)." </h3>";
 }
 
 $sqlQuery = "SELECT * FROM `preferred_courses` WHERE directory_id = '$directoryID'";
@@ -72,8 +68,6 @@ if ($result) {
     }
     $_SESSION["preferredCourses"] = $results;
     mysqli_free_result($result);
-} else {
-    $body = "<h3>Failed to retrieve document existing transcript ".mysqli_error($db)." </h3>";
 }
 
 
