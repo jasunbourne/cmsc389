@@ -116,6 +116,15 @@ CREATE TABLE `transcripts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Table structure for table 'feedback'
+--
+
+CREATE TABLE `feedback` (
+  `directory_id` varchar(20) NOT NULL,
+  `feedback` varchar(400) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Indexes for dumped tables
 --
 
