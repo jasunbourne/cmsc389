@@ -10,9 +10,7 @@ function showApplication($directoryID)
         else
             header("Location: adminViewApps.php");
     }
-
-    echo $directoryID;
-
+    
     if (!empty($directoryID)) {
         $table = "transcripts";
 
