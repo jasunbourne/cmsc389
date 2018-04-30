@@ -62,12 +62,12 @@ else {
 		        <legend>Student Information</legend>		    
                 <div class="form-group">
                     <label for="uid">UID:</label>
-                    <input class="form-control" type="text" id="uid" name="uid" maxlength="9" value="$uid"/><br>
+                    <input class="form-control" type="text" id="uid" name="uid" maxlength="9" value="$uid" required/><br>
                 </div>                
                 <div class="row">
                     <div class="col">
                         <label for="entrySemester">Entry Semester:</label>
-                        <select class="form-control" name="entrySemester" id="entrySemester">
+                        <select class="form-control" name="entrySemester" id="entrySemester" required>
                             <option value = "spring" {$isSelected("entrySemester", "spring")}>Spring</option>
                             <option value = "fall" {$isSelected("entrySemester", "fall")}>Fall</option>
                             <option value = "summer" {$isSelected("entrySemester", "summer")}>Summer</option>
@@ -81,14 +81,14 @@ else {
                 
                 <div class="form-group">
                     <label for="gpa">Cumulative GPA:</label>
-                    <input class="form-control" id="gpa" type="number" name="gpa" max="4" min="0" step=".01" value="$gpa">  
+                    <input class="form-control" id="gpa" type="number" name="gpa" max="4" min="0" step=".01" value="$gpa" required>  
                 </div>
     
                 <div class="form-group">
                     <label for="studentType">Student Type:</label>
                     <div id="studentType">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="studentType" id="phd" value="phd" {$isChecked("studentType", "phd")}>
+                            <input class="form-check-input" type="radio" name="studentType" id="phd" value="phd" {$isChecked("studentType", "phd")} required>
                             <label class="form-check-label" for="phd">PhD Student</label>
                         </div>
                         <div class="form-check">
@@ -104,19 +104,19 @@ else {
                 
                 <div class="form-group">
                     <label for="department">Department:</label>
-                    <input class="form-control" id="department" type="text" name="department" value="$department">  
+                    <input class="form-control" id="department" type="text" name="department" value="$department" required>  
                 </div>
                 
                 <div class="form-group">
                     <label for="advisor">Advisor:</label>
-                    <input class="form-control" id="advisor" type="text" name="advisor" value="$advisor">  
+                    <input class="form-control" id="advisor" type="text" name="advisor" value="$advisor" required>  
                 </div>
                 
                 <div class="form-group">
                     <label for="currentTA">Are you currently a TA?</label>
                     <div id="currentTA">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="currentlyTA" id="1" value="1" onClick="displayForm(this)" {$isChecked("currentlyTA", "1")}>
+                            <input class="form-check-input" type="radio" name="currentlyTA" id="1" value="1" onClick="displayForm(this)" {$isChecked("currentlyTA", "1")} required>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
@@ -184,8 +184,14 @@ echo $page;
     function displayForm(c) {
         if (c.value === "1") {
             document.getElementById("form-container").style.display = 'inline';
+            document.getElementById("currentStep").required = true;
+            document.getElementById("currCourse").required = true;
+            document.getElementById("instructor").required = true;
         } else if (c.value === "0") {
             document.getElementById("form-container").style.display = 'none';
+            document.getElementById("currentStep").required = false;
+            document.getElementById("currCourse").required = false;
+            document.getElementById("instructor").required = false;
         }
     }
 

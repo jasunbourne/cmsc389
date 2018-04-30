@@ -50,7 +50,7 @@ else {
                     <label for="type">Preferred Position Type:</label>
                     <div id="type">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="position" id="full" value="fulltime" {$isChecked("position", "fulltime")}>
+                            <input class="form-check-input" type="radio" name="position" id="full" value="fulltime" {$isChecked("position", "fulltime")} required>
                             <label class="form-check-label" for="full">Full-time 20hrs/week</label>
                         </div>
                         <div class="form-check">
@@ -63,7 +63,7 @@ else {
                     <label for="canTeach">Do you prefer a teaching position?</label>
                     <div id="canTeach">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="canTeach" id="1" value="1" {$isChecked("canTeach", "1")}>
+                            <input class="form-check-input" type="radio" name="canTeach" id="1" value="1" {$isChecked("canTeach", "1")} required>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
@@ -76,7 +76,7 @@ else {
                     <label for="prefersTeach">Can you teach?</label>
                     <div id="prefersTeach">
                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="prefersTeach" id="1" value="1" {$isChecked("prefersTeach", "1")}>
+                            <input class="form-check-input" type="radio" name="prefersTeach" id="1" value="1" {$isChecked("prefersTeach", "1")} required>
                             <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class="form-check">
@@ -89,7 +89,7 @@ else {
                 <div class="row">
                     <div class="col">
                         <label for="semester">Semester Applying For:</label>
-                        <select class="form-control" name="semester" id="semester">
+                        <select class="form-control" name="semester" id="semester" required>
                             <option value = "spring" {$isSelected("semester", "spring")}>Spring</option>
                             <option value = "fall" {$isSelected("semester", "fall")}>Fall</option>
                             <option value = "summer" {$isSelected("semester", "summer")}>Summer</option>
@@ -97,13 +97,13 @@ else {
                     </div>
                     <div class="form-group">
                         <label for="year">Year:</label>
-                        <input class="form-control" id="year" type="text" name="year" value=$date>  
+                        <input class="form-control" id="year" type="text" name="year" value=$date required>  
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="preferredCourses">Select the courses you would be interested in being a TA for: </label>
-                    <select class="form-control" name="preferredCourses[]" id="preferredCourses" multiple>
+                    <select class="form-control" name="preferredCourses[]" id="preferredCourses" multiple required>
                         $courses
                     </select>
                 </div>

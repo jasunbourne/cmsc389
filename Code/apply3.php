@@ -43,12 +43,12 @@ else {
                         <label for="mei">Have you passed the Maryland English Institute (MEI Evaluation)?</label>
                         <div id="mei">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="mei" id="1" value="1" {$isChecked("mei", "1")}>
-                                <label class="form-check-label" for="yes">Yes</label>
+                                <input class="form-check-input" type="radio" name="mei" id="mei_yes" value="1" {$isChecked("mei", "1")}>
+                                <label class="form-check-label" for="mei_yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="mei" id="0" value="0" {$isChecked("mei", "0")}>
-                                <label class="form-check-label" for="no">No</label>
+                                <input class="form-check-input" type="radio" name="mei" id="mei_no" value="0" {$isChecked("mei", "0")}>
+                                <label class="form-check-label" for="mei_no">No</label>
                             </div>
                         </div>
                     </div>  
@@ -56,12 +56,12 @@ else {
                         <label for="umei">Are you currently taking a UMEI course?</label>
                         <div id="umei">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="umei" id="1" value="1" {$isChecked("umei", "1")}>
-                                <label class="form-check-label" for="yes">Yes</label>
+                                <input class="form-check-input" type="radio" name="umei" id="umei_yes" value="1" {$isChecked("umei", "1")}>
+                                <label class="form-check-label" for="umei_yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="umei" id="0" value="0" {$isChecked("umei", "0")}>
-                                <label class="form-check-label" for="no">No</label>
+                                <input class="form-check-input" type="radio" name="umei" id="umei_no" value="0" {$isChecked("umei", "0")}>
+                                <label class="form-check-label" for="umei_no">No</label>
                             </div>
                         </div>
                     </div>  
@@ -83,8 +83,12 @@ echo $page;
     function displayForm(c) {
         if (c.value === "1") {
             document.getElementById("form-container").style.display = 'inline';
+            document.getElementById("umei_yes").required = true;
+            document.getElementById("mei_yes").required = true;
         } else if (c.value === "0") {
             document.getElementById("form-container").style.display = 'none';
+            document.getElementById("umei_yes").required = false;
+            document.getElementById("mei_yes").required = false;
         }
     }
 
