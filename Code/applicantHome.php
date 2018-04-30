@@ -83,6 +83,8 @@ $body = <<<BODY
     <h1>TA Application</h1>
     <a class="btn btn-primary" href="apply1.php">Apply/Edit Application</a>
     <a class="btn btn-primary" href="deleteApplication.php">Remove Application</a>
+    <a class="btn btn-primary" href="displayApplication.php/?id=$directoryID">Review Application</a>
+
 
 BODY;
 

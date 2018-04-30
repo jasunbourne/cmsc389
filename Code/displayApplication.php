@@ -40,8 +40,8 @@
             $isTaRow = "<td colspan='12'><b>Not currently a TA.</b></td>";
 
         $passedMei = $recordArray['passed_mei'] ? "Passed MEI." : "Did not pass MEI.";
-        $takingMei = $recordArray['taking_umei'] ? "Currentlty taking UMEI course." :
-            $isUs = $recordArray['is_non_us'] ? "Not a US student. {$passedMei} {$takingMei}" : "US Student.";
+        $takingMei = $recordArray['taking_umei'] ? "Currently taking UMEI course.": "Not currently taking UMEI course";
+        $isUs = $recordArray['is_non_us'] ? "Not a US student. {$passedMei} {$takingMei}" : "US Student.";
 
         $wantsToTeach = $recordArray['prefers_teach'] ? "and prefers to teach." : "but does not prefer to teach.";
         $canTeach = $recordArray['can_teach'] ? "Can teach {$wantsToTeach}" : "Cannot teach.";
