@@ -6,7 +6,7 @@ if (isset($_POST['appButton'])) {
 }
 
 if (isset($_POST['adminButton'])) {
-    header("Location: adminChoose.php");
+    header("Location: adminHome.php");
 }
 
 if (isset($_POST['facultyButton'])) {

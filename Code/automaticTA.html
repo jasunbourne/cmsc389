@@ -11,22 +11,16 @@
     session_start();
     $sel = $_SESSION['classChoice'];
     $sql = "";
-
-    $sql = "SELECT directory_id FROM classes where course like '$sel'";
+    $sql = "SELECT directory_id FROM preferred_courses where course like '$sel'";
 
     $result = $db_connection->query($sql);
-    $array = $_SESSION['arr'];
     $table = '<div class="container-fluid"><table class="table table-bordered table-striped table-hover table-condensed text-center">';
     $table .= "<thead>";
-    foreach ($array as $key) {
-        $table .= '<th class="text-center">'.$key."</th>";
-    }
-    $table .= "</thead>";
-
+    $table .= '<th class="text-center">Name</th></thead>';
 
     if ($result->num_rows > 0) {
-    // output data of each row
         while($row = $result->fetch_assoc()) {
+            
             $table .= "<tr>";
             foreach($array as $key1){
                 $table .= "<td>".$row[$key1]."</td>";
