@@ -71,12 +71,24 @@ CREATE TABLE `experience` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `experience`
+-- Table structure for table `chosen_ta`
 --
 
 CREATE TABLE `paired_ta_final` (
   `directory_id` varchar(20) NOT NULL,
   `course` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_settings`
+--
+
+CREATE TABLE `course_settings` (
+  `course` varchar(10) NOT NULL,
+  'num_ta' int NOT NULL,
+  'chosen_ta' NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
