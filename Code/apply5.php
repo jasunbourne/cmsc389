@@ -30,7 +30,7 @@ if ($result) {
     if (mysqli_num_rows($result) > 0) {
         $oldFileName = $recordArray['name'];
         $isRequired = "";
-        $previousFile = "<p>Transcript on File: <a target='_blank' href='displayTranscript.php'>$oldFileName</a></p>";
+        $previousFile = "<p>Transcript on File: <a target='_blank' href='displayTranscript.php?id=$directoryID'>$oldFileName</a></p>";
     }
     mysqli_free_result($result);
 } else { 				   ;

@@ -29,8 +29,49 @@
             $recordArray = mysqli_fetch_assoc($result);
             mysqli_free_result($result);
         } else {
-            ;
             $body = "<h3>Could not find an application.</h3>";
+        }
+
+        $sqlQuery = "SELECT * FROM `experience` WHERE directory_id = '$directoryID'";
+        $result = $db_connection->query($sqlQuery);
+        if ($result) {
+            $experience = "";
+            if (mysqli_num_rows($result) > 0) {
+                while ($courses = mysqli_fetch_assoc($result)) {
+                    $experience .= "{$courses['course']} ";
+                }
+            }
+            else {
+                $experience = "None";
+            }
+            mysqli_free_result($result);
+        }
+
+        $sqlQuery = "SELECT * FROM `preferred_courses` WHERE directory_id = '$directoryID'";
+        $result = $db_connection->query($sqlQuery);
+        if ($result) {
+            $preferredCourses = "";
+            if (mysqli_num_rows($result) > 0) {
+                while ($courses = mysqli_fetch_assoc($result)) {
+                    $preferredCourses .= "{$courses['course']} ";
+                }
+            }
+            else {
+                $preferredCourses = "None";
+            }
+            mysqli_free_result($result);
+        }
+
+        $transcript = "";
+        $sqlQuery = "select name from $table where directory_id = '{$directoryID}'";
+        $result = $db_connection->query($sqlQuery);
+        if ($result) {
+            $transcriptArray = mysqli_fetch_assoc($result);
+            if (mysqli_num_rows($result) > 0) {
+                $transcriptName = $transcriptArray['name'];
+                $transcript = "<a target='_blank' href='displayTranscript.php?id=$directoryID'>$transcriptName</a>";
+            }
+            mysqli_free_result($result);
         }
         mysqli_close($db_connection);
 
@@ -57,11 +98,14 @@
                     <tr><td colspan="12">&nbsp;</td></tr>
                     <tr><td colspan="6"><b>Department:</b> {$recordArray['department']}</td><td colspan="6"><b>Advisor:</b> {$recordArray['advisor']}</td></tr>
                     <tr>{$isTaRow}</tr>
+                    <tr><td colspan="12"><b>TA Experience: </b>$experience</td></tr>
                     <tr><td colspan="12">&nbsp;</td></tr>
                     <tr><td colspan="12">{$isUs}</td></tr>
                     <tr><td colspan="12">{$canTeach}</td></tr>
                     <tr><td colspan="6"><b>Applying for:</b> {$positon}</td><td colspan="6"><b>Semester</b> {$recordArray['semester']} {$recordArray['year']}</td></tr>
+                    <tr><td colspan="12"><b>Preferred Courses: </b>$preferredCourses</td></tr>
                     <tr><td colspan="12">&nbsp;</td></tr>
+                    <tr><td colspan="12"><b>Transcript: </b> $transcript</td></tr>
                     <tr><td colspan="12">Additional info: {$recordArray['additional_info']}</td></tr>
                 </table>
             </div>

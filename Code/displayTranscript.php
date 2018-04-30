@@ -5,7 +5,7 @@ require_once("dbsupport.php");
 
 session_start();
 
-$directoryID = getFieldValue("directoryId", "default");
+$directoryID = $_GET['id'];
 $table = "transcripts";
 
 $db_connection = getDBConnection();

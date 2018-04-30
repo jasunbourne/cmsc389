@@ -48,7 +48,7 @@
      
     $('#myTable tbody').on('click', 'tr', function () {
         var data = table.row(this).data();
-        document.location.href = 'displayApplication.php/?id='+data[3];
+        document.location.href = 'displayApplication.php?id='+data[3];
     } );
 } );
     </script>";
