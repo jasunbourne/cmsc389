@@ -37,6 +37,15 @@ session_unset();
 
 $_SESSION["directoryId"] = $directoryID;
 
-echo "Application Deleted";
+require_once("bootstrap.php");
+
+$body = <<<BODY
+    <p>Application for $directoryID Deleted</p>
+    <a class="btn btn-primary" href="applicantHome.php">Home</a>
+BODY;
+
+$page = generatePage($body, "Application Deleted");
+echo $page;
+
 
 ?>
