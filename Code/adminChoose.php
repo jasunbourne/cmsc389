@@ -7,12 +7,12 @@ require_once("dbsupport.php");
 $table = "course_settings";
 $db_connection = getDBConnection();
 $course_name = $_SESSION['className'];
-$sqlQuery = "select * from $table where course like '$course_name'";
+$sqlQuery = "select * from $table where course = $course_name";
 $result = $db_connection->query($sqlQuery);
-if ($result) {
+if($result){
     $numberOfRows = mysqli_num_rows($result);
     if ($numberOfRows == 0) {
-        $sqlQuery2 = "INSERT into $table (`course`, `num_ta_teaching`, 'num_ta_grading', 'chosen_ta_teaching', 'chosen_ta_grading') VALUES ('$course_name', 0,0,0,0)";
+        $sqlQuery2 = "INSERT into course_settings(course, num_ta_teaching, num_ta_grading, chosen_ta_teaching, chosen_ta_grading) VALUES ($course_name, 0,0,0,0)";
         $result2 = $db_connection->query($sqlQuery);
     }
 }

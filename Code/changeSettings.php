@@ -2,7 +2,6 @@
 $body = "";
 
 require_once("dbsupport.php");
-require_once("applicationSupport.php");
 
 session_start();
 $teaching_ta = 0;
@@ -12,7 +11,7 @@ $course_name = strtoupper($course_name);
 
 $table = "course_settings";
 $db_connection = getDBConnection();
-$sqlQuery = "select * from '$table' where course like '$course_name'";
+$sqlQuery = "select * from '$table' where course = '$course_name'";
 $result = $db_connection->query($sqlQuery);
 if ($result) {
     echo "YEAH";
