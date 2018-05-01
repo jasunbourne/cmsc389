@@ -14,16 +14,6 @@ if (isset($_POST['viewApps'])) {
     header("Location: adminViewApps.php");
 }
 
-if (isset($_POST['viewCourses'])) {
-    header("Location: viewCourses.php");
-}
-
-if (isset($_POST['addCourse'])) {
-    header("Location: addCourse.php");
-}
-
-
-
 if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_POST['facultyButton'])) {
     $body = <<<BODY
         <div class="container">
@@ -36,14 +26,7 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                     <div class="form-group"> 
                         <input type = "submit" class="btn btn-info" name="submitClass" value = "Assign TA's"/>
                         <input type="submit" class="btn btn-info" name="viewApps" value="View TA Applications" formnovalidate/>
-                    </div>
-                    
-                    <hr>
-               
-                    <div class="form-group"> 
-                        <input type = "submit" class="btn btn-info" name="addCourse" value ="Add a course" formnovalidate/>
-                        <input type="submit" class="btn btn-info" name="viewCourses" value="View courses" formnovalidate/>
-                    </div>
+                    </div>                    
                 </form>
             </div>
         </div>
