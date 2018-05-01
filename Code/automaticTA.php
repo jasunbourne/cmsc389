@@ -106,11 +106,11 @@ $topPart = <<<EOBODY
         <div class="form-horizontal" >
              <form action="{$_SERVER["PHP_SELF"]}" method="post" class="form-horizontal">
                 <div class="form-group">
-                    <div class="col-sm-3 col-sm-push-3">
-                        Teaching TA's Have Been Successfully Updated: <input type="submit" value="View Here" name="viewTeaching" class="form-control">
+                    <div class="form-group">
+                        Teaching TA's Have Been Successfully Updated: <input type="submit" class="btn btn-info" value="View Here" name="viewTeaching" class="form-control">
                     </div>
-                    <div class="col-sm-3 col-sm-push-3">
-                        Grading TA's Have Been Successfully Updated: <input type="submit" value="View Here" name="viewGrading" class="form-control">
+                    <div class="form-group">
+                        Grading TA's Have Been Successfully Updated: <input type="submit" class="btn btn-info" value="View Here" name="viewGrading" class="form-control">
                     </div>
                 </div>
             </form>     

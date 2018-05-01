@@ -7,11 +7,11 @@
 
     $db_connection = getDBConnection();
     session_start();
-    $teaching_array = $_SESSION['teachingArray'];
+    $grading_array = $_SESSION['gradingArray'];
 
     $table = "<table id='myTable' class='table'><thead><tr><td>First Name</td><td>Last Name</td><td>Email</td><td>Direcotry ID</td><td>GPA</td><td>TA?</td>";
     $table .= "<td>US?</td><td>Can Teach?</td></tr></thead><tbody>";
-    foreach ($teaching_array as $key) {
+    foreach ($grading_array as $key) {
         $sqlQuery = "select last_name, first_name, email, uid, gpa, is_ta, is_non_us, 
         can_teach, directory_id, student_type 
         from applicants where directory_id like '$key'";
