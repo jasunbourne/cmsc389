@@ -44,11 +44,25 @@ foreach($all_students_array as $key){
 }
 if(count($teaching_array) > 0 && count($grading_array) > 0){
 
+    if(count($teaching_array) < $needed_teaching){
+        $teaching_max = count($teaching_array);
+    }
+    else{
+        $teaching_max = $needed_teaching;
+    }
+
+    if(count($grading_array) < $needed_grading){
+        $grading_max = count($grading_array);
+    }
+    else{
+        $grading_max = $needed_grading;
+    }
+
     $index = 0;
     $index2 = 0;
     $randomStudArrTeaching = array();
     $randomStudArrGrading = array();
-    while($index < $needed_teaching){
+    while($index < $teaching_max){
 
         if(count($teaching_array) == 1){
             $rand = 0;
@@ -63,7 +77,7 @@ if(count($teaching_array) > 0 && count($grading_array) > 0){
     }
 
 
-    while($index2 < $needed_grading){
+    while($index2 < $grading_max){
         if(count($grading_array) == 1){
             $rand = 0;
         }
