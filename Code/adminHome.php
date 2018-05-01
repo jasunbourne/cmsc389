@@ -25,7 +25,8 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                     </div>
                     <div class="form-group"> 
                         <input type = "submit" class="btn btn-info" name="submitClass" value = "Assign TA's"/>
-                        <input type="submit" class="btn btn-info" name="viewApps" value="View TA Applications" formnovalidate/>
+                        <input type="submit" class="btn btn-info" name="viewApps" value="View TA Applications" formnovalidate/><br><br>
+                        <a class = "btn btn-info" href = "main.php"> Return Home </a>
                     </div>                    
                 </form>
             </div>
