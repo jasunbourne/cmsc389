@@ -30,7 +30,7 @@ if (isset($_POST['changeSettings'])) {
     $update_teaching = $_POST['teaching'];
     $update_grading = $_POST['grading'];
     $update_students = $_POST['students'];
-    $update_students_total = $_POST['total_students'];
+    $update_students_total = 0;
     $sqlQuery = "UPDATE $table set num_ta_teaching = $update_teaching, num_ta_grading = $update_grading, num_students = $update_students,
             num_students_allowed = $update_students_total where course like '$course_name'";
     $result = $db_connection->query($sqlQuery);
@@ -51,10 +51,7 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                         </div>
                         
                         <div class="form-group">
-                            Number of Stduents In Class: <input type="number" value="{$students}" min="0" max="1000" name="students" />
-                        </div>
-                        <div class="form-group">
-                            Number of Stduents In Class: <input type="number" value="{$total_students}" min="0" max="1000" name="total_students" />
+                            Number of Students: <input type="number" value="{$students}" min="0" max="1000" name="students" />
                         </div>
                     <div class="form-group"> 
                         <input type = "submit" class="btn btn-info" name="changeSettings" value = "Accept Changes"/>

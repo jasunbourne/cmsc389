@@ -13,7 +13,7 @@ if($result){
     $numberOfRows = mysqli_num_rows($result);
     if ($numberOfRows == 0) {
         $sqlQuery2 = "INSERT into $table VALUES ('$course_name', 0,0,0,0,0,0)";
-        $result2 = $db_connection->query($sqlQuery);
+        $result2 = $db_connection->query($sqlQuery2);
     }
 }
 
