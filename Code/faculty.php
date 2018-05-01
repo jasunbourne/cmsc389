@@ -4,6 +4,18 @@ require_once ("bootstrap.php");
 
 $body = "";
 
+if (isset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'])
+    && $_SERVER['PHP_AUTH_USER'] === 'faculty'
+    && $_SERVER['PHP_AUTH_PW'] === 'nelson') {
+
+    // User is properly authenticated...
+
+} else {
+    header('WWW-Authenticate: Basic realm="Secure Site"');
+    header('HTTP/1.0 401 Unauthorized');
+    exit('This site requires authentication');
+}
+
 if(isset($_POST["returnButton"]))
     header("Location: faculty.php");
 
