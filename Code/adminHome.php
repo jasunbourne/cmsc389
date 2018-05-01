@@ -5,6 +5,30 @@ session_start();
 
 require_once("applicationSupport.php");
 
+if (isset($_SERVER['PHP_AUTH_USER'])) {
+    $myUser = trim($_SERVER['PHP_AUTH_USER']);
+    $myPass = trim($_SERVER['PHP_AUTH_PW']);
+}
+
+$file = fopen("admin.txt","r");
+    $admin_username = trim(fgets($file));
+    $admin_password = trim(fgets($file));
+fclose($file);
+
+$myUser = "";
+$myPass = "";
+
+if (isset($_SERVER['PHP_AUTH_USER'])) {
+    $myUser = trim($_SERVER['PHP_AUTH_USER']);
+    $myPass = trim($_SERVER['PHP_AUTH_PW']);
+}
+
+if (!($myUser === $admin_username && password_verify($myPass, $admin_password))) {
+    header('WWW-Authenticate: Basic realm="Admin"');
+    header('HTTP/1.0 401 Unauthorized');
+    die ("Not authorized");
+}
+
 if (isset($_POST['submitClass'])) {
     $_SESSION['className'] = trim($_POST['className']);
     header("Location: adminChoose.php");

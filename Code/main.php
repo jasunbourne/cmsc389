@@ -2,7 +2,7 @@
 $body = "";
 
 if (isset($_POST['appButton'])) {
-    header("Location: applicantHome.php");
+    header("Location: login.php");
 }
 
 if (isset($_POST['adminButton'])) {
