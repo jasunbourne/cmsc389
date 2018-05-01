@@ -8,12 +8,19 @@ $table = "";
 
 $db_connection = getDBConnection();
 
+if (isset($_POST['addStudents'])) {
+    print_r ($_POST['dirIDS']);
+}
+
+$table .= "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\" class=\"form-horizontal\">";
+
+
 $sqlQuery = "select last_name, first_name, email, uid, gpa, is_ta, is_non_us, 
             can_teach, student_type, directory_id 
             from applicants";
 $result = $db_connection->query($sqlQuery);
 if ($result) {
-    $table = "<table id='myTable' class='table'><thead><tr><td></td><td>First Name</td><td>Last Name</td><td>Email</td><td>Direcotry ID</td><td>GPA</td><td>TA?</td>";
+    $table .= "<table id='myTable' class='table'><thead><tr><td></td><td>First Name</td><td>Last Name</td><td>Email</td><td>Direcotry ID</td><td>GPA</td><td>TA?</td>";
     $table .= "<td>US?</td><td>Can Teach?</td><td>Student Type</td><td></td></tr></thead><tbody>";
     while ($record = $result->fetch_assoc()) {
         $ta = boolToStr($record['is_ta']);
@@ -39,7 +46,24 @@ function boolToStr($bool) {
     return $bool ? "Yes" : "No";
 }
 
-$body .= "<button type='button' class='btn btn-primary' id='returnHomeButton'>Return to Main Menu</button>";
+$body .= "";
+
+$table .= <<<BODY
+
+                <div class="form-group">
+                    
+                        <button type='button' class='btn btn-primary' id='returnHomeButton'>Return to Main Menu</button>
+                        <input type="submit" class='btn btn-primary' value="Add students" name="addStudents">
+                </div>
+            </form> 
+
+
+BODY;
+
+
+
+
+
 $body .= "<script>
         var btn = document.getElementById('returnHomeButton');
         btn.addEventListener('click', function() {
