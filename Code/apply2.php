@@ -5,7 +5,7 @@ require_once("applicationSupport.php");
 
 
 function createCourseOptionList($courses){
-    $result = "";
+    $result = "<option value='' >None</option>\n";
     foreach($courses as $course){
         $isSelected = isSelectedMulti("experience", $course);
         $result.= "<option value='$course' $isSelected>$course</option>\n";
@@ -57,7 +57,7 @@ else {
     $courses = createCourseOptionList(["CMSC131", "CMSC132", "CMSC216", "CMSC250", "CMSC330", "CMSC351", "Other"]);
 
     $studentInfo = <<<BODY
-		<form action="{$_SERVER['PHP_SELF']}" method="post">
+		<form action="{$_SERVER['PHP_SELF']}" method="post" onsubmit="return validateForm()">
 		    <fieldset>
 		        <legend>Student Information</legend>		    
                 <div class="form-group">
@@ -150,6 +150,7 @@ else {
                 <div class="form-group">
                     <label for="experience">Select all of the courses for which you have been a TA:</label>
                     <select class="form-control" name="experience[]" id="experience" multiple>
+                    
                         $courses
                     </select>
                 </div>
