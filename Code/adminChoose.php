@@ -12,7 +12,8 @@ $result = $db_connection->query($sqlQuery);
 if ($result) {
     $numberOfRows = mysqli_num_rows($result);
     if ($numberOfRows == 0) {
-        $sqlQuery2 = "INSERT into $table (`course`, `num_ta_teaching`, 'num_ta_grading', 'chosen_ta_teaching', 'chosen_ta_grading') VALUES ('$course_name', 0,0,0,0)";
+        $sqlQuery2 = "INSERT into $table VALUES ('$course_name', 0,0,0,0,0,0)";
+        echo $sqlQuery2;
         $result2 = $db_connection->query($sqlQuery);
     }
 }
@@ -27,6 +28,10 @@ if (isset($_POST['appButton'])) {
 
 if (isset($_POST['adminButton'])) {
     header("Location: automaticTA.php");
+}
+
+if (isset($_POST['adminButtonHome'])) {
+    header("Location: adminHome.php");
 }
 
 if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_POST['facultyButton'])) {
@@ -46,6 +51,9 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                     <div class="form-group"> 
                         Run TA Assignment System: <input type="submit" class="btn btn-info" name="adminButton" value="Go Here"/>
                     </div>
+                    
+                    
+                    <input type="submit" class="btn btn-info" name="adminButtonHome" value="Admin Main Menu"/>
                 </form>
             </div>
         </div>

@@ -101,7 +101,9 @@ CREATE TABLE `course_settings` (
   `num_ta_teaching` int NOT NULL,
   `num_ta_grading` int NOT NULL,
   `chosen_ta_teaching` int NOT NULL,
-  `chosen_ta_grading` int NOT NULL
+  `chosen_ta_grading` int NOT NULL,
+  `num_students` int NOT NULL,
+  `num_students_allowed` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
