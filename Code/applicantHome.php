@@ -77,8 +77,8 @@ $body = <<<BODY
     <h1>TA Application</h1>
     <a class="btn btn-primary" href="apply1.php">Apply/Edit Application</a>
     <a class="btn btn-primary" href="deleteApplication.php" onclick = "return confirm('Are you sure you want to remove your application?');">Remove Application</a>
-    <a class="btn btn-primary" href="applicantViewApplication.php">Review Application</a>
-
+    <a class="btn btn-primary" href="applicantViewApplication.php">Review Application</a> <br><br>
+    <a class = "btn btn-primary" href = "main.php"> Return Home </a>
 
 BODY;
 
