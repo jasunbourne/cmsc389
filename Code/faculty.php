@@ -27,7 +27,7 @@ if (isset($_POST["displayAssigned"])) {
 
         $bottom = <<<EOBODY
             <form action = "faculty.php" method = "post">
-                <input type = "submit" name = "returnButton" value = "Back"/>
+                <input type = "submit" name = "returnButton" class = "btn btn-info" value = "Back"/>
             </form>
 EOBODY;
 
@@ -57,7 +57,7 @@ if (isset($_POST["displayUnassigned"])) {
         $table = "<table id='taTable' class='table'><thead><tr><td>Directory ID</td><td>Name</td><td>Transcripts</td></tr></thead><tbody>";
         while ($record = $result->fetch_assoc()) {
                 $transcriptName = $record['first_name']." transcript";
-                $transcript = "<a target='_blank' href='displayTranscript.php?id=$directoryID'>$transcriptName</a>";
+                $transcript = "<a target='_blank' href='displayTranscript.php?id={$record['directory_id']}'>$transcriptName</a>";
                 $table .= "<tr><td>{$record['directory_id']}</td><td>{$record['first_name']}.{$record['last_name']}</td><td>$transcript</td>";
         }
         $table .= "</tbody></table>";
