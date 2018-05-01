@@ -4,6 +4,7 @@
     require_once "bootstrap.php";
 
     $body = "";
+    $table = "";
 
     $db_connection = getDBConnection();
 
@@ -18,7 +19,6 @@
             $ta = boolToStr($record['is_ta']);
             $us = boolToStr(!$record['is_non_us']);
             $teach = boolToStr($record['can_teach']);
-            echo $record['student_type'];
             $table .= "<tr><td>{$record['first_name']}</td><td>{$record['last_name']}</td><td>{$record['email']}</td><td>{$record['directory_id']}</td>";
             $table .= "<td>{$record['gpa']}</td><td>{$ta}</td><td>{$us}</td><td>{$teach}</td><td>{$record['student_type']}</td></tr>";
         }
