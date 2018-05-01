@@ -134,7 +134,7 @@ CREATE TABLE `transcripts` (
 
 CREATE TABLE `feedback` (
   `directory_id` varchar(20) NOT NULL,
-  `feedback` varchar(400) NOT NULL,
+  `feedback` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
