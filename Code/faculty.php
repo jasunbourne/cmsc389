@@ -14,7 +14,7 @@ if (isset($_POST["displayAssigned"])) {
     $db_connection = getDBConnection();
 
     $sqlQuery =
-        "select directory_id, course from paired_ta_final";
+        "select directory_id, course from paired_ta_final_grading";
     $result = $db_connection->query($sqlQuery);
     if ($result) {
         $table = "<table id='taTable' class='table'><thead><tr><td>Directory ID</td><td>Assigned Course</td></tr></thead><tbody>";
@@ -50,7 +50,7 @@ if (isset($_POST["displayUnassigned"])) {
     $sqlQuery =
         "SELECT a.first_name as first_name, a.last_name as last_name, a.directory_id as directory_id
         FROM applicants a
-        LEFT JOIN paired_ta_final pat ON pat.directory_id = a.directory_id
+        LEFT JOIN paired_ta_final_grading pat ON pat.directory_id = a.directory_id
         WHERE pat.directory_id IS NULL";
     $result = $db_connection->query($sqlQuery);
     if ($result) {
