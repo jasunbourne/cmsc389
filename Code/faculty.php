@@ -100,7 +100,7 @@ if (isset($_POST["submitFeedback"])) {
     $sqlQuery = "insert INTO feedback (`directory_id`, `feedback`) VALUES ('$uid', '$feedback')";
     $result = $db_connection->query($sqlQuery);
 
-    if (!mysqli_query($db_connection, $sqlQuery))
+    if (!$result)
     {
         echo("Errorcode: " . mysqli_error($db_connection));
     }
