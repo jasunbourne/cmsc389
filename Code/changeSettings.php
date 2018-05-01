@@ -11,14 +11,13 @@ $course_name = strtoupper($course_name);
 
 $table = "course_settings";
 $db_connection = getDBConnection();
-$sqlQuery = "select * from '$table' where course = '$course_name'";
+$sqlQuery = "select * from $table where course = '$course_name'";
 $result = $db_connection->query($sqlQuery);
 if ($result) {
-    echo "YEAH";
     $numberOfRows = mysqli_num_rows($result);
     while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $teaching_ta = $recordArray['num_ta_teaching'];
-        $grading = $recordArray['num_ta_grading'];
+        $grading_ta = $recordArray['num_ta_grading'];
     }
 }
 
