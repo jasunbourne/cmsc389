@@ -10,7 +10,7 @@ function showApplication($directoryID)
         else
             header("Location: adminViewApps.php");
     }
-    
+
     if (!empty($directoryID)) {
         $table = "transcripts";
 
@@ -49,6 +49,20 @@ function showApplication($directoryID)
             if (mysqli_num_rows($result) > 0) {
                 while ($courses = mysqli_fetch_assoc($result)) {
                     $preferredCourses .= "{$courses['course']} ";
+                }
+            } else {
+                $preferredCourses = "None";
+            }
+            mysqli_free_result($result);
+        }
+
+        $feedback = "<tr><td colspan='12'><b>Feedback about this TA:</b></td></tr>";
+        $sqlQuery = "SELECT * FROM `feedback` WHERE directory_id = '$directoryID'";
+        $result = $db_connection->query($sqlQuery);
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $feedback .= "<tr><td colspan='12'>{$row['feedback']}</td></tr>";
                 }
             } else {
                 $preferredCourses = "None";
@@ -101,6 +115,7 @@ function showApplication($directoryID)
                     <tr><td colspan="12">&nbsp;</td></tr>
                     <tr><td colspan="12"><b>Transcript: </b> $transcript</td></tr>
                     <tr><td colspan="12">Additional info: {$recordArray['additional_info']}</td></tr>
+                    $feedback
                 </table>
             </div>
 EOBODY;

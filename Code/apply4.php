@@ -7,6 +7,8 @@ session_start();
 
 $contactInfo = "";
 
+$isGrad = getFieldValue("studentType", "") != "ugrad";
+$courseCount = $isGrad ? 5 : 3;
 
 function createCourseOptionList($courses){
     $result = "";
@@ -102,7 +104,7 @@ else {
                 </div>
                 
                 <div class="form-group">
-                    <label for="preferredCourses">Select the courses you would be interested in being a TA for: </label>
+                    <label for="preferredCourses">Select the courses you would be interested in being a TA for (max $courseCount): </label>
                     <select class="form-control" name="preferredCourses[]" id="preferredCourses" multiple required>
                         $courses
                     </select>
@@ -122,6 +124,24 @@ BODY;
 
 $page = generatePage($contactInfo, "Apply 4");
 echo $page;
+
+
+echo <<<SCRIPT
+<script>
+    $(document).ready(function() {
+        var last_valid_selection = null;
+        $('#preferredCourses').change(function(event) {
+
+            if ($(this).val().length > $courseCount) {
+                $(this).val(last_valid_selection);
+                alert("Too many courses selected")
+            } else {
+                last_valid_selection = $(this).val();
+            }
+        });
+    });
+</script>
+SCRIPT;
 
 
 ?>

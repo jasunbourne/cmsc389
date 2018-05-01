@@ -24,9 +24,10 @@ if (!isset($_POST['appButton']) and !isset($_POST['adminButton']) and !isset($_P
                         Enter Class Name:<br><input type="text" name="className" required/>
                     </div>
                     <div class="form-group"> 
-                       <input type = "submit" class="btn btn-info" name="submitClass" value = "Assign TA's"/>
-                        <input type="submit" class="btn btn-info" name="viewApps" value="View TA Applications" formnovalidate/>
-                    </div>
+                        <input type = "submit" class="btn btn-info" name="submitClass" value = "Assign TA's"/>
+                        <input type="submit" class="btn btn-info" name="viewApps" value="View TA Applications" formnovalidate/><br><br>
+                        <a class = "btn btn-info" href = "main.php"> Return Home </a>
+                    </div>                    
                 </form>
             </div>
         </div>
