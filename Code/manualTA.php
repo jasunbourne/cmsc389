@@ -20,7 +20,7 @@ if ($result) {
         $us = boolToStr(!$record['is_non_us']);
         $teach = boolToStr($record['can_teach']);
         $table .= "<tr>";
-        $table .= "<td><input type='radio' value='{$record['directory_id']}'/></td>";
+        $table .= "<td><input type='checkbox' name='dirIDS[]' value='{$record['directory_id']}'/></td>";
         $table .= "<td>{$record['first_name']}</td><td>{$record['last_name']}</td><td>{$record['email']}</td><td>{$record['directory_id']}</td>";
         $table .= "<td>{$record['gpa']}</td><td>{$ta}</td><td>{$us}</td><td>{$teach}</td><td>{$record['student_type']}</td><td class='view'><button class='btn btn-info' type='buton'>More</button></td></tr>";
     }
