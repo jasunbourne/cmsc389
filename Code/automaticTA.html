@@ -1,37 +1,87 @@
 <?php 
-    require_once "support.php";
-    require_once "dbLogin.php"; 
 
-    /* Connecting to the database */        
-    $db_connection = new mysqli($host, $user, $password, $database);
-    if ($db_connection->connect_error) {
-        die($db_connection->connect_error);
-    }
+require_once("dbsupport.php");
 
-    session_start();
-    $sel = $_SESSION['classChoice'];
-    $sql = "";
-    $sql = "SELECT directory_id FROM preferred_courses where course like '$sel'";
+session_start();
+$db_connection = getDBConnection();
+$course_name = $_SESSION['className'];
+$sqlQuery = "select * from course_settings where course = '$course_name'";
+$result = $db_connection->query($sqlQuery);
+while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $num_ta_teaching = $recordArray['num_ta_teaching'];
+    $num_ta_grading = $recordArray['num_ta_grading'];
+    $chosen_ta_grading = $recordArray['chosen_ta_grading'];
+    $chosen_ta_teaching = $recordArray['chosen_ta_teaching'];
+}
 
-    $result = $db_connection->query($sql);
-    $table = '<div class="container-fluid"><table class="table table-bordered table-striped table-hover table-condensed text-center">';
-    $table .= "<thead>";
-    $table .= '<th class="text-center">Name</th></thead>';
+$needed_teaching = $num_ta_teaching - $chosen_ta_teaching;
+$needed_grading = $num_ta_grading - $chosen_ta_grading;
 
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            
-            $table .= "<tr>";
-            foreach($array as $key1){
-                $table .= "<td>".$row[$key1]."</td>";
-            }
-            $table .= "</tr>";
+$sqlQuery2 = "select directory_id from preferred_courses where course = '$course_name'";
+$result2 = $db_connection->query($sqlQuery2);
+$all_students_array = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+$teaching_array = array();
+$grading_array = array();
+$final_teaching_array = array();
+$final_grading_array = array();
+foreach($all_students_array as $key){
+    $sqlQuery3 = "select * from preferred_courses where course = '$course_name' and directory_id = '$key";
+    $result3 = $db_connection->query($sqlQuery2);
+    while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if($recordArray['can_teach'] == 1 && $recordArray['prefers_teach'] == 1){
+            $teaching_array[] = $recordArray['directory_id'];
         }
-    } 
-    $table .= "</table></div>";
-    if(isset($_POST["back"])) {
-        header("Location: main.html");
+        else{
+            $grading_array[] = $recordArray['directory_id'];
+        }
     }
+}
+
+$index = 0;
+$randomStudArrTeaching = array();
+$randomStudArrGrading = array();
+while($index < $needed_teaching){
+    $rand = rand(0, count($teaching_array) - 1);
+    if(!in_array($rand, $randomStudArr){
+        $randomStudArrTeaching[] = $rand;
+        $index++;
+    }
+}
+
+while($index < $needed_grading){
+    $rand = rand(0, count($grading_array) - 1);
+    if(!in_array($rand, $randomStudArr){
+        $randomStudArrGrading = $rand;
+        $index++;
+    }
+}
+
+for($ind = 0; $ind < $teaching_array; $ind++){
+    if(in_array($ind, $randomStudArrTeaching)){
+        $final_teaching_array[] = $teaching_array[$ind];
+    }
+}
+
+for($ind = 0; $ind < $grading_array; $ind++){
+    if(in_array($ind, $randomStudArrGrading)){
+        $final_grading_array[] = $grading_array[$ind];
+    }
+}
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+
+        $table .= "<tr>";
+        foreach($array as $key1){
+            $table .= "<td>".$row[$key1]."</td>";
+        }
+        $table .= "</tr>";
+    }
+}
+$table .= "</table></div>";
+if(isset($_POST["back"])) {
+    header("Location: main.html");
+}
 
 
 $topPart = <<<EOBODY

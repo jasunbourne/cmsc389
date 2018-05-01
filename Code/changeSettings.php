@@ -2,7 +2,6 @@
 $body = "";
 
 require_once("dbsupport.php");
-require_once("applicationSupport.php");
 
 session_start();
 $teaching_ta = 0;
