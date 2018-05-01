@@ -1,6 +1,20 @@
 <?php
 
+require_once("applicationSupport.php");
+
+
+
 function generatePage($body, $title="Example") {
+
+    $logout ="";
+
+    if(session_status() == PHP_SESSION_NONE ) {
+        session_start();
+    }
+    if(isset($_SESSION["directoryId"])){
+        $logout = '<a class="btn float-right" href="logout.php">Logout</a>';
+    }
+
     $page = <<<EOPAGE
 <!doctype html>
 <html>
@@ -21,7 +35,7 @@ function generatePage($body, $title="Example") {
             <div class="page-header" style="background-color: red;">
                 <img style="margin-top:15px; margin-left:10px;" src="https://upload.wikimedia.org/wikipedia/en/3/3e/University_of_Maryland_seal.svg" alt="UMD Logo" height="70" width="70">
                 <img style="margin-top:15px; margin-left:10px;" src="http://s3.amazonaws.com/umdheader.umd.edu/app/images/umd-bar-logo.png" alt="toggle">
-                <a class="btn float-right" href="logout.php">Logout</a>
+                $logout
                 <hr>
             </div>  
             </br>
