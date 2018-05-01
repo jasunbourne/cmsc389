@@ -25,7 +25,7 @@ $grading_array = array();
 $final_teaching_array = array();
 $final_grading_array = array();
 foreach($all_students_array as $key){
-    $sqlQuery3 = "select * from preferred_courses where course = '$course_name' and directory_id = '$key";
+    $sqlQuery3 = "select * from preferred_courses where course = '$course_name' and directory_id = '$key'";
     $result3 = $db_connection->query($sqlQuery2);
     while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         if($recordArray['can_teach'] == 1 && $recordArray['prefers_teach'] == 1){
@@ -68,19 +68,13 @@ for($ind = 0; $ind < $grading_array; $ind++){
     }
 }
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-
-        $table .= "<tr>";
-        foreach($array as $key1){
-            $table .= "<td>".$row[$key1]."</td>";
-        }
-        $table .= "</tr>";
-    }
+if(isset($_POST["viewTeaching"])) {
+    $_SESSION['teachingArray'] = $final_teaching_array;
+    header("Location: adminViewTeaching");
 }
-$table .= "</table></div>";
-if(isset($_POST["back"])) {
-    header("Location: main.html");
+if(isset($_POST["viewGrading"])) {
+    $_SESSION['gradingArray'] = $final_grading_array;
+    header("Location: adminViewGrading");
 }
 
 
@@ -89,7 +83,10 @@ $topPart = <<<EOBODY
              <form action="{$_SERVER["PHP_SELF"]}" method="post" class="form-horizontal">
                 <div class="form-group">
                     <div class="col-sm-3 col-sm-push-3">
-                        <input type="submit" value="Back To Main Menu" name="back" class="form-control">
+                        Teaching TA's Have Been Successfully Updated: <input type="submit" value="View Here" name="viewTeaching" class="form-control">
+                    </div>
+                    <div class="col-sm-3 col-sm-push-3">
+                        Grading TA's Have Been Successfully Updated: <input type="submit" value="View Here" name="viewGrading" class="form-control">
                     </div>
                 </div>
             </form>     
