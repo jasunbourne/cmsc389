@@ -7,10 +7,12 @@
     $table = "";
 
     $db_connection = getDBConnection();
+    session_start();
+    $class_name = $_SESSION['className'];
 
     $sqlQuery = "select last_name, first_name, email, uid, gpa, is_ta, is_non_us, 
-            can_teach, student_type, directory_id 
-            from applicants";
+            can_teach, student_type, applicants.directory_id 
+            from applicants, preferred_courses where applicants.directory_id = preferred_courses.directory_id and course like '$class_name'";
     $result = $db_connection->query($sqlQuery);
     if ($result) {
         $table = "<table id='myTable' class='table'><thead><tr><td>First Name</td><td>Last Name</td><td>Email</td><td>Direcotry ID</td><td>GPA</td><td>TA?</td>";

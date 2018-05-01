@@ -35,6 +35,7 @@ if (isset($_POST['submitClass'])) {
 }
 
 if (isset($_POST['viewApps'])) {
+    $_SESSION['className'] = trim($_POST['className']);
     header("Location: adminViewApps.php");
 }
 

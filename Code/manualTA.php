@@ -9,7 +9,31 @@ $table = "";
 $db_connection = getDBConnection();
 
 if (isset($_POST['addStudents'])) {
-    print_r ($_POST['dirIDS']);
+    session_start();
+    $teaching_array = array();
+    $grading_array = array();
+    $arr_chosen = $_POST['dirIDS'];
+    $course_name = $_SESSION['className'];
+    foreach ($arr_chosen as $key) {
+        $sql = "select directory_id, can_teach from applicants where directory_id like '$key'";
+        $res = $db_connection->query($sql);
+        while ($recordArray = mysqli_fetch_array($res, MYSQLI_ASSOC)){
+            if($recordArray['can_teach'] == 1){
+                $teaching_array[] = $recordArray['directory_id'];
+            }
+            else{
+                $grading_array[] = $recordArray['directory_id'];
+            }
+        }
+    }
+    foreach ($teaching_array as $key1) {
+        $sql2 = "INSERT INTO paired_ta_final_teaching VALUES ('$key1', '$course_name')";
+        $res2 = $db_connection->query($sql2);
+    }
+    foreach ($grading_array as $key2) {
+        $sql3 = "INSERT INTO paired_ta_final_grading VALUES ('$key2', '$course_name')";
+        $res3 = $db_connection->query($sql3);
+    }
 }
 
 $table .= "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\" class=\"form-horizontal\">";
