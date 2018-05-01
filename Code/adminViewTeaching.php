@@ -11,7 +11,7 @@
     $teaching_array = $_SESSION['teachingArray'];
 
     if (isset($_POST['addStudents'])) {
-        if(isset(_POST['dirIDS'])){
+        if(isset($_POST['dirIDS'])){
             $teaching_array = array();
             $grading_array = array();
             $arr_chosen = $_POST['dirIDS'];
@@ -63,15 +63,17 @@ if ($result) {
         $table .= "<td>{$record['first_name']}</td><td>{$record['last_name']}</td><td>{$record['email']}</td><td>{$record['directory_id']}</td>";
         $table .= "<td>{$record['gpa']}</td><td>{$ta}</td><td>{$us}</td><td>{$teach}</td><td>{$record['student_type']}</td><td class='view'><button class='btn btn-info' type='buton'>More</button></td></tr>";
     }
-    $table .= "</tbody></table>";
-    $table .= "<script>$(document).ready( function () {
-                    $('#myTable').DataTable();
-                    });</script>";
-    mysqli_free_result($result);
+
 } else {                   ;
     $body = "<h3>There was an error.</h3>";
 }
 }
+
+$table .= "</tbody></table>";
+$table .= "<script>$(document).ready( function () {
+                    $('#myTable').DataTable();
+                    });</script>";
+mysqli_free_result($result);
 mysqli_close($db_connection);
 
 
@@ -87,7 +89,7 @@ $table .= <<<BODY
                     
                         <button type='button' class='btn btn-primary' id='returnHomeButton'>Return to Main Menu</button>
                         <input type="submit" class='btn btn-primary' value="Add students" name="addStudents">
-                        <input type="submit" class='btn btn-primary' value="Back" onclick="window.history.go(-1);">
+                        <a href="automaticTA.php" type="submit" class='btn btn-primary'>Back</a>
                 </div>
             </form> 
 

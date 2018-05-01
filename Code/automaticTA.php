@@ -127,7 +127,8 @@ $topPart = <<<EOBODY
                         Grading TA's Have Been Successfully Updated: <input type="submit" class="btn btn-info" value="View Here" name="viewGrading" class="form-control">
                     </div>
                 </div>
-            </form>     
+            </form>    
+            <a href="adminHome.php" class="btn btn-info">Home</a> 
         </div>
 EOBODY;
 
